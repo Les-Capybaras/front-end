@@ -1,18 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
 import  './assets/style/main.scss';
 import Layout from './layout/layout';
+import Auth from './pages/auth';
 
 function App() {
   return (
     <div>
-        <Layout/>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
+        {/* <Layout/> */}
+        <Auth/>   
     </div>
     
   )
 }
-
 export default App;

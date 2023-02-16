@@ -3,8 +3,16 @@ module.exports = {
   content: [
      "./src/**/*.{js,jsx,ts,tsx}",
   ],
-  theme: {
-    extend: {},
+  daisyui: {
+    themes: [
+      {
+        bumblebee: {
+          ...require("daisyui/src/colors/themes")["[data-theme=bumblebee]"],
+          primary: "#52489C",
+          secondary: "#59C3C3",
+        },
+      },
+    ],
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }
