@@ -1,0 +1,59 @@
+// @use '../base/fonts' as fonts;
+
+.loginScreen {
+  align-items: center;
+}
+
+.loginContainer {
+  align-items: center;
+  width: 480px;
+  height: 440px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px -2px rgb(0 0 0 / 16%);
+  border: 1px solid #ededf1;
+
+  .card-body {
+    width: 470px;
+    height: 430px;
+  }
+
+  .loginTitle {
+    font-size: 28px;
+    font-weight: 900;
+    background: linear-gradient(270deg, #52489c 20.24%, #59c3c3 71.8%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .forgotLabel {
+    font-size: 14px;
+    color: #6e6e73;
+    font-weight: 600;
+    & :hover {
+      color: #000;
+      text-decoration-line: none;
+    }
+  }
+
+  .btnLogin {
+    color: #fff;
+    background-color: #000;
+    text-transform: none;
+    font-weight: 700;
+  }
+  .newAccount {
+    flex-grow: 0;
+    font-size: 16px;
+    color: #6e6e73;
+    font-weight: 500;
+  }
+  .linkCreate {
+    flex-grow: 0;
+    font-size: 16px;
+    color: #000;
+    font-weight: 600;
+    & :hover {
+      text-decoration-line: none;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+@font-face {
+    font-family: "Chango Regular";
+    src: local("~/assets/fonts/Chango/Chango-Regular.ttf");
+    src: url("~/assets/fonts/Chango/Chango-Regular.ttf");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Montserrat Regular";
+    src: local("~/assets/fonts/Montserrat/Montserrat-Regular.ttf");
+    src: url("~/assets/fonts/Montserrat/Montserrat-Regular.ttf");
+    font-display: swap;
+  }
+
+  
+  @font-face {
+    font-family: "Montserrat Bold";
+    src: local("~/assets/fonts/Montserrat/Montserrat-Bold.ttf");
+    src: url("~/assets/fonts/Montserrat/Montserrat-Bold.ttf");
+    font-weight: bold;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Montserrat SemiBold";
+    src: local("~/assets/fonts/Montserrat/Montserrat-SemiBold.ttf");
+    src: url("~/assets/fonts/Montserrat/Montserrat-SemiBold.ttf");
+    font-weight: bold;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Montserrat Medium";
+    src: local("~/assets/fonts/Montserrat/Montserrat-Medium.ttf");
+    src: url("~/assets/fonts/Montserrat/Montserrat-Medium.ttf");
+    font-display: swap;
+  }
+  
+  
+  //fonts variables
+  $regular: "Montserrat Regular", sans-serif;
+  $SemiBold: "Montserrat SemiBold", sans-serif;
+  $Bold: "Montserrat Bold", sans-serif;
+  $Medium: "Montserrat Medium", sans-serif;
+  $ChangoRegular : "Chango Regular", sans-serif;
+
+  
