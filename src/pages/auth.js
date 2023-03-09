@@ -5,16 +5,19 @@ import { useState } from 'react';
 export default function Auth() {
     const [switchAuth, setswitchAuth] = useState(false);
 
-    const HandleSwitch = () => {
+    const handleLoginSwitch = () => {
         setswitchAuth(!switchAuth);
     }
 
     return (    
         <div className="d-flex ">
 
-            {switchAuth ? <Register/> : <Login/>}
+            {switchAuth 
+                ? <Register handleLoginSwitch={handleLoginSwitch} /> 
+                : <Login handleLoginSwitch={handleLoginSwitch} />
+             }
 
-            <a className='btn' onClick={HandleSwitch}>switch</a>
+            {/* <a className='btn' onClick={HandleSwitch}>switch</a> */}
         </div>
     )
 }

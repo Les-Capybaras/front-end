@@ -5,9 +5,7 @@ export default function Layout() {
     return (
       <div className="">
         <Header/>
-        <Sidebar/>
-
-        layout
+        {/* <Sidebar/> */}
       </div>
     )
 }
