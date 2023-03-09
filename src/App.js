@@ -11,8 +11,8 @@ import Road from './pages/road/index'
 function App() {
   return (
     <>
-        <Layout/>
-        {/* <Auth/>    */}
+        {/* <Layout/> */}
+        <Auth/>   
 
         <Routes>
           <Route>
