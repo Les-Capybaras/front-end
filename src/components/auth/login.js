@@ -1,10 +1,5 @@
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-
 /* eslint-disable jsx-a11y/anchor-is-valid */
 export default function Login() {
-  const navigate = useNavigate();
-  const gotoSignUpPage = () => navigate("/register");
   
   return (
     <div class="loginScreen h-screen flex flex-col justify-center">
@@ -47,9 +42,9 @@ export default function Login() {
           </label>
           <div class=" flex justify-center align-center">
             <p class="newAccount">Vous n'avez pas encore de compte ?</p>
-            <Link to="/register" className="linkCreate link-hover pl-2">
+            <a className="linkCreate link-hover pl-2">
               S'inscrire
-            </Link>
+            </a>
           </div>
         </div>
       </form>

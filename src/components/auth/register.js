@@ -41,7 +41,9 @@ export default function Register() {
           </label>
           <div class=" flex justify-center align-center">
             <p class="newAccount">Vous n'avez pas encore de compte ?</p>
-              
+            <a className="linkCreate link-hover pl-2">
+              Se connecter
+            </a>
           </div>
         </div>
       </form>
