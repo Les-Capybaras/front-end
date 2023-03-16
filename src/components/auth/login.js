@@ -123,7 +123,7 @@ export default function Login({ handleLoginSwitch }) {
         <figure className="loginImg">
           <img src="../login-img.png" className="pic" />
         </figure>
-      </form>
+      </Form>
     </div>
   );
 };
