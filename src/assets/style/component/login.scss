@@ -6,12 +6,18 @@
 
 .loginContainer {
   align-items: center;
-  width: 480px;
+  width: 955px;
   height: auto;
-  border-radius: 12px;
+  border-radius: 19px;
   box-shadow: 0 4px 8px -2px rgb(0 0 0 / 16%);
   border: 1px solid #ededf1;
+    &.register{
+      width: 1040px !important;
+    }
 
+.logoImgAuth{
+  max-width: 35%;
+}
   .card-body {
     width: 470px;
     height: auto;
@@ -37,9 +43,14 @@
 
   .btnLogin {
     color: #fff;
-    background-color: #000;
+    background-color: #3B2F6B;
     text-transform: none;
     font-weight: 700;
+    border-radius: 53px;
+    box-shadow:0px 3px 6px 0px rgba(59, 47, 107, 0.2);
+    
+    stroke: linear-gradient(360deg, rgba(59, 47, 107, 0) 0%, rgba(255, 255, 255, 0.2) 100%),
+    linear-gradient(0deg, #3B2F6B, #3B2F6B);
   }
   .newAccount {
     flex-grow: 0;
@@ -51,10 +62,27 @@
     cursor: pointer;
     flex-grow: 0;
     font-size: 16px;
-    color: #000;
+    color: #3B2F6B;
     font-weight: 600;
     & :hover {
       text-decoration-line: none;
     }
   }
+  .loginImg {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+    .pic {
+      max-width: 100%;
+    }
+  }
+  .divider:before{
+      height: 1px !important;
+  }
+  .divider:after{
+    height: 1px !important;
+}
+.divider{
+  margin: 0px ;
+}
 }

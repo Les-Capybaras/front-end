@@ -11,10 +11,10 @@ import Road from './pages/road/index'
 function App() {
   return (
     <>
-        <Layout/>
-        {/* <Auth/>    */}
+{/* <Layout/> */}
+      <Auth/>    
 
-        <Routes>
+<Routes>
           <Route>
             <Route path="/" element={<Dashboard />} exact />
             <Route path="/history" element={<History />} />

@@ -1,0 +1,18 @@
+.doubleInputForm {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+}
+
+.inputRegister {
+  width: 198px;
+}
+
+.registerImg {
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  .pic {
+    max-width: 100%;
+  }
+}

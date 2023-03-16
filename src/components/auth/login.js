@@ -1,34 +1,27 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-export default function Login({handleLoginSwitch}) {
-
+export default function Login({ handleLoginSwitch }) {
   return (
     <div className="loginScreen h-screen flex flex-col justify-center">
-      <form className="loginContainer card w-96 bg-base-100 shadow-xl card-bordered">
+      <form className="loginContainer card card-side bg-base-100 shadow-xl card-bordered">
         <div className="card-body">
-          <div className="flex flex-row">
-            <h2 className="loginTitle card-title ">Papotcar</h2>
+          <div className="flex flex-row justify-center">
+            <img src="../logoPPC.png" className="logoImgAuth" />
           </div>
           <div className="text-success"></div>
           <div className="form-control">
-            <label className="label">
-              <span className="label-text">Email</span>
-            </label>
             <input
               type="email"
-              placeholder="email"
+              placeholder="adresse email"
               required
               className="input input-bordered"
               v-model="email"
             />
           </div>
           <div className="form-control">
-            <label className="label">
-              <span className="label-text">Mot de passe</span>
-            </label>
             <input
               type="password"
-              placeholder="password"
+              placeholder="Mot de passe"
               required
               className="input input-bordered"
               v-model="password"
@@ -41,13 +34,20 @@ export default function Login({handleLoginSwitch}) {
           <label className="justify-center label">
             <a className="forgotLabel link-hover">Mot de passe oublié?</a>
           </label>
+          <div class="divider ma-0"></div> 
           <div className=" flex justify-center align-center">
             <p className="newAccount">Vous n'avez pas encore de compte ?</p>
-            <a className="linkCreate link-hover pl-2" onClick={handleLoginSwitch}>
+            <a
+              className="linkCreate link-hover pl-2"
+              onClick={handleLoginSwitch}
+            >
               S'inscrire
             </a>
           </div>
         </div>
+        <figure className="loginImg">
+          <img src="../login-img.png" className="pic" />
+        </figure>
       </form>
     </div>
   );
