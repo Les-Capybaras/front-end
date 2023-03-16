@@ -8,19 +8,50 @@ import Dashboard from './pages/dashboard/index';
 import History from './pages/history/index'
 import Road from './pages/road/index'
 
+import AuthService from './services/auth.service';
+import { useEffect, useState } from 'react';
+import EventBus from './common/EventBus';
+
+
 function App() {
+
+  const [currentUser, setCurrentUser] = useState(undefined);
+
+  useEffect(() => {
+    const user = AuthService.getCurrentUser();
+
+    if (user) {
+      setCurrentUser(user);
+    }
+
+    EventBus.on("logout", () => {
+      logOut();
+    });
+
+    return () => {
+      EventBus.remove("logout");
+    };
+  }, []);
+
+  const logOut = () => {
+    AuthService.logout();
+    setCurrentUser(undefined);
+  };
+
   return (
     <>
-{/* <Layout/> */}
-      <Auth/>    
+      {!currentUser
+      ? <Layout currentUser={currentUser} />  
+      : <Auth/>
+      } 
 
-<Routes>
-          <Route>
-            <Route path="/" element={<Dashboard />} exact />
-            <Route path="/history" element={<History />} />
-            <Route path="/road" element={<Road />} />
-          </Route>
-        </Routes>
+      <Routes>
+        <Route>
+          <Route path="/" element={<Dashboard />} exact />
+          <Route path="/history" element={<History />} />
+          <Route path="/road" element={<Road />} />
+        </Route>
+      </Routes>
     </>
     
   )
