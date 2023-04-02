@@ -197,7 +197,7 @@ export default function Register({ handleLoginSwitch }) {
             </div>
           )}
           <CheckButton style={{ display: "none" }} ref={checkBtn} />
-      </form>
+      </Form>
     </div>
   );
 }
