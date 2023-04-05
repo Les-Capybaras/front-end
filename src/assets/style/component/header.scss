@@ -1,92 +1,121 @@
 .navbar {
-    padding: 1rem 0;
-    border-bottom: 1px solid #D9D9D9;
+  border-bottom: 1px solid #e8f5f5;
+  padding-right: 5rem;
+  padding-left: 5rem;
 }
 .header-logo {
-    display: flex;
-    width: 20%;
+  display: flex;
+  width: 20%;
 }
 .header-logo img {
-    margin-left: 2rem;
-    max-height: 45px;
+  max-height: 38px;
 }
 .header-link {
-    display: flex;
-    width: 60%;
-    justify-content: center;
+  display: flex;
+  width: 60%;
+  justify-content: flex-start;
+  background-color: transparent;
+  & :hover {
+    background-color: transparent;
+  }
 }
 .header-link li {
-    font-weight: 500;
-    height: 100%;
+  font-weight: 794;
+  font-size: 16px;
+  height: 100%;
+  color: #001d46;
 }
 .header-link li.active {
-    color: #59C3C3;
+  color: #179f9f;
 }
 .header-link li.active::before {
-    width: 100%;
-    height: 4px;
-    content: "";
-    position: absolute;
-    top: 3.8rem;
-    background-color: #59C3C3;
+  width: 100%;
+  height: 4px;
+  content: "";
+  position: absolute;
+  top: 54px;
+  background-color: #179f9f;
+  border-radius: 10px;
 }
 .header-profil {
-    display: flex;
-    width: 20%;
+  display: flex;
+  width: 20%;
+  cursor: pointer;
+  align-items: center;
 }
 .profil {
-    padding: 0 0.5rem 0 0.5rem;
-    // height: 60px;
-    display: flex;
-    align-content: center;
-    margin-left: auto;
+  padding: 0 0.5rem 0 0.5rem;
+  // height: 60px;
+  display: flex;
+  align-content: center;
+  margin-left: auto;
+  align-items: center;
 }
-.profil div {
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    font-weight: 400;
-    line-height: normal;
-    padding-right: 0.5rem;
-}
+// .profil div {
+//     display: flex;
+//     flex-direction: column;
+//     height: auto;
+//     font-weight: 400;
+//     line-height: normal;
+//     padding-right: 0.5rem;
+// }
 .profil p {
-    font-weight: 500;
-    font-size: 14px;
-    margin-bottom: 5px;
+  font-weight: 556;
+  font-size: 16px;
+  color: #001d46;
+}
+.header-profil label {
+  display: flex;
+  align-items: center;
 }
 .profil span {
-    font-size: 12px;
-    color: #6E6E73;
+  font-size: 12px;
+  color: #6e6e73;
 }
 .profil svg {
-    font-size: 3rem;
-    margin-right: 0.5rem;
-    color: #D9D9D9;
+  font-size: 3rem;
+  margin-right: 0.5rem;
+  color: #b8ade3;
 }
-.profil:hover svg {
-    color: #59C3C3;
-}
-.settings {
-    border-radius: 20rem;
-    margin-right: 0.5rem;
-}
-.responsive-header {
-    display: none;
-    font-size: 40px;
-    cursor: pointer;
-}
+// .profil:hover svg {
+//     color: #179F9F;
 
+// }
+
+.btn-new-trajectory {
+  background-color: #f4eeff;
+  color: #715bc8;
+  font-weight: 556;
+  font-size: 16px;
+  text-transform: none;
+  border-radius: 51px;
+  min-height: 40px;
+  max-height: 40px;
+  width: 171px;
+  & :hover {
+    background-color: none !important;
+  }
+}
+.btn-new-trajectory svg{
+    margin-right: 10px;
+  }
+.responsive-header {
+  display: none;
+  font-size: 40px;
+  cursor: pointer;
+}
 
 @media (max-width: 1024px) {
-    .header-logo {
-        width: auto
-    }
-    .header-link, .header-profil {
-        display: none;
-    }
-    .responsive-header {
-        display: flex;
-        margin-left: auto;
-        margin-right: 2rem;
-    }
+  .header-logo {
+    width: auto;
+  }
+  .header-link,
+  .header-profil {
+    display: none;
+  }
+  .responsive-header {
+    display: flex;
+    margin-left: auto;
+    margin-right: 2rem;
+  }
 }
