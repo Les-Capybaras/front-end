@@ -10,7 +10,7 @@ export default function Auth() {
     }
 
     return (    
-        <div className="d-flex ">
+        <div className="flex">
 
             {switchAuth 
                 ? <Register handleLoginSwitch={handleLoginSwitch} /> 

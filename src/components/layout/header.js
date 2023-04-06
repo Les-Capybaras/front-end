@@ -76,7 +76,7 @@ export default function Header() {
         <label className="modal-box relative" htmlFor="">
         <label htmlFor="dc-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
           <h3 className="text-lg font-bold">Êtes vous sûr de vouloir vous déconnectez ?</h3>
-          <button onClick={() => handleDisconnect()} className="d-flex mt-5 btn btn-error">Deconnexion</button>
+          <button onClick={() => handleDisconnect()} className="flex mt-5 btn btn-error">Deconnexion</button>
         </label>
       </label>
 
@@ -87,7 +87,7 @@ export default function Header() {
         <div className="modal-box relative">
           <label htmlFor="setting-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
           <h3 className="text-lg font-bold">Mon profil</h3>
-          <div className="py-4 d-flex">
+          <div className="py-4 flex">
             <div className="avatar">
               <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                 <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
@@ -119,12 +119,12 @@ export default function Header() {
           </div>
           {profilSwitch 
             ? (
-              <button onClick={() => setProfilSwitch(!profilSwitch)} className="d-flex mt-3 btn btn-primary">Modifier</button>
+              <button onClick={() => setProfilSwitch(!profilSwitch)} className="flex mt-3 btn btn-primary">Modifier</button>
             ) : (
-            <div className="d-flex">
-              <button onClick={() => setProfilSwitch(!profilSwitch)} className="d-flex mt-3 btn ">Annuler</button>
+            <div className="flex">
+              <button onClick={() => setProfilSwitch(!profilSwitch)} className="flex mt-3 btn ">Annuler</button>
 
-              <button onClick={() => setProfilSwitch(!profilSwitch)} className="d-flex mt-3 ml-3 btn btn-outline btn-primary">Enregistrer</button>
+              <button onClick={() => setProfilSwitch(!profilSwitch)} className="flex mt-3 ml-3 btn btn-outline btn-primary">Enregistrer</button>
             </div>
           )}
           

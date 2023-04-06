@@ -1,7 +1,7 @@
 export default function Road() {
 
     return (    
-        <div className="d-flex ">
+        <div className="flex ">
             Road
         
         </div>
