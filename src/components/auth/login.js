@@ -10,17 +10,16 @@ import AuthService from "../../services/auth.service";
 export default function Login({ handleLoginSwitch }) {
   const form = useRef();
   const checkBtn = useRef();
+  const navigate = useNavigate();
 
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  const navigate = useNavigate();
-
-  const onChangeUsername = (e) => {
-    const username = e.target.value;
-    setUsername(username);
+  const onChangeEmail = (e) => {
+    const email = e.target.value;
+    setEmail(email);
   };
 
   const onChangePassword = (e) => {
@@ -37,9 +36,9 @@ export default function Login({ handleLoginSwitch }) {
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.login(username, password).then(
-        () => {
-          navigate("/profile");
+      AuthService.login(email, password).then(
+        (response) => {
+          navigate("/dashboard");
           window.location.reload();
         },
         (error) => {
@@ -60,7 +59,7 @@ export default function Login({ handleLoginSwitch }) {
   };
 
   return (
-    <div className="loginScreen h-screen flex flex-col justify-center">
+    <div className="container mx-auto loginScreen h-screen flex flex-col justify-center">
 
       <Form onSubmit={handleLogin} ref={form} className="loginContainer card w-96 bg-base-100 shadow-xl card-bordered">
         <div className="card-body">
@@ -75,8 +74,8 @@ export default function Login({ handleLoginSwitch }) {
               required
               className="input input-bordered w-96"
               v-model="email"
-              value={username}
-              onChange={onChangeUsername}
+              value={email}
+              onChange={onChangeEmail}
             // validations={[required]}
             />
           </div>

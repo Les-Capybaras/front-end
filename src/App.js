@@ -12,9 +12,8 @@ import AuthService from './services/auth.service';
 import { useEffect, useState } from 'react';
 import EventBus from './common/EventBus';
 
-
 function App() {
-
+  
   const [currentUser, setCurrentUser] = useState(undefined);
 
   useEffect(() => {
@@ -40,20 +39,28 @@ function App() {
 
   return (
     <>
-      {!currentUser
-      ? <Layout currentUser={currentUser} />  
-      : <Auth/>
+      {currentUser
+        ? (
+          <>
+            <Layout currentUser={currentUser} />
+            <Routes>  
+              <Route>
+                <Route path="/dashboard" element={<Dashboard />} exact />
+                <Route path="/history" element={<History />} />
+                <Route path="/road" element={<Road />} />
+              </Route>
+            </Routes>
+          </>
+        )  
+        : (
+          <Routes>  
+            <Route>
+              <Route path="/auth" element={<Auth/>} exact />
+            </Route>
+          </Routes>
+        )
       } 
-
-      <Routes>
-        <Route>
-          <Route path="/" element={<Dashboard />} exact />
-          <Route path="/history" element={<History />} />
-          <Route path="/road" element={<Road />} />
-        </Route>
-      </Routes>
     </>
-    
   )
 }
 export default App;

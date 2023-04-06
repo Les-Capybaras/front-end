@@ -16,6 +16,16 @@ const validEmail = (value) => {
   }
 };
 
+const vage = (value) => {
+  // if (value == (int)) {
+  //   return (
+  //     <div className="invalid-feedback d-block">
+  //       Please select a correct number
+  //     </div>
+  //   );
+  // }
+};
+
 const vusername = (value) => {
   if (value.length < 3 || value.length > 20) {
     return (
@@ -35,6 +45,15 @@ const vpassword = (value) => {
     );
   }
 };
+const vpasswordConfirmation = (value) => {
+  if (value.length < 6 || value.length > 40) {
+    return (
+      <div className="invalid-feedback d-block">
+        The password must be between 6 and 40 characters.
+      </div>
+    );
+  }
+};
 
 export default function Register({ handleLoginSwitch }) {
   const form = useRef();
@@ -43,6 +62,8 @@ export default function Register({ handleLoginSwitch }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [age, setAge] = useState(0);
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -61,6 +82,16 @@ export default function Register({ handleLoginSwitch }) {
     setPassword(password);
   };
 
+  const onChangePasswordConfirmation = (e) => {
+    const passwordConfirmation = e.target.value;
+    setPasswordConfirmation(passwordConfirmation);
+  };
+  
+  const onChangeAge = (e) => {
+    const age = e.target.value;
+    setAge(age);
+  };
+
   const handleRegister = (e) => {
     e.preventDefault();
 
@@ -70,7 +101,7 @@ export default function Register({ handleLoginSwitch }) {
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.register(username, email, password).then(
+      AuthService.register(username, email, password, passwordConfirmation, age).then(
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
@@ -91,7 +122,7 @@ export default function Register({ handleLoginSwitch }) {
   };
 
   return (
-    <div className="loginScreen h-screen flex flex-col justify-center">
+    <div className="container mx-auto loginScreen h-screen flex flex-col justify-center">
       <Form onSubmit={handleRegister} ref={form} className="loginContainer register card w-96 bg-base-100 shadow-xl card-bordered">
         <div className="card-body">
         {!successful && (
@@ -100,36 +131,14 @@ export default function Register({ handleLoginSwitch }) {
             <img src="../logoPPC.png" className="logoImgAuth" />
           </div>
           <div className="text-success"></div>
-          <div className="doubleInputForm">
-            <div className="form-control">
+          
+          <div className="doubleInputForm mt-5 mb-2">
+            <div className="form-control w-70">
               <input
-                type="email"
-                placeholder="Adresse email"
-                required
-                className="inputRegister input input-bordered"
-                v-model="email"
-                value={email}
-                  onChange={onChangeEmail}
-                  validations={[validEmail]}
-              />
-            </div>
-            <div className="form-control">
-              <input
-                type="phone"
-                placeholder="Téléphone"
-                required
-                className="inputRegister input input-bordered"
-                v-model="phone"
-              />
-            </div>
-          </div>
-          <div className="doubleInputForm">
-            <div className="form-control">
-              <input
-                type="name"
+                type="text"
                 placeholder="Nom"
                 required
-                className="inputRegister input input-bordered"
+                className="input input-bordered"
                 v-model="username"
                   name="username"
                   value={username}
@@ -137,29 +146,57 @@ export default function Register({ handleLoginSwitch }) {
                   validations={[vusername]}
               />
             </div>
-            <div className="form-control">
+            <div className="form-control w-30">
               <input
-                type="surname"
-                placeholder="Prénom"
+                type="text"
+                placeholder="Age"
                 required
-                className="inputRegister input input-bordered"
-                v-model="surname"
+                className="input input-bordered"
+                v-model="age"
+                name="age"
+                  value={age}
+                  onChange={onChangeAge}
+                  validations={[vage]}
               />
             </div>
           </div>
+
           <div className="form-control">
-              <input
-                type="password"
-                placeholder="Mot de passe"
-                required
-                className="input input-bordered"
-                v-model="password"
-                value={password}
-                  onChange={onChangePassword}
-                  validations={[vpassword]}
-                />
-              
-            </div>
+            <input
+              type="email"
+              placeholder="Adresse email"
+              required
+              className="input input-bordered my-2"
+              v-model="email"
+              value={email}
+                onChange={onChangeEmail}
+                validations={[validEmail]}
+            />
+          </div>
+          <div className="form-control">
+            <input
+              type="password"
+              placeholder="Mot de passe"
+              required
+              className="input input-bordered my-2"
+              v-model="password"
+              value={password}
+                onChange={onChangePassword}
+                validations={[vpassword]}
+              />
+          </div>
+          <div className="form-control">
+            <input
+              type="password"
+              placeholder="Mot de passe"
+              required
+              className="input input-bordered my-2"
+              v-model="password"
+              value={passwordConfirmation}
+                onChange={onChangePasswordConfirmation}
+                validations={[vpasswordConfirmation]}
+              />
+          </div>
 
           <div className="text-error"></div>
           <div className="form-control mt-6">

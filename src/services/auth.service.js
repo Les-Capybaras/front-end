@@ -1,39 +1,47 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/api/auth/";
+const API_URL_AUTH = "http://back.papotcar.ismadev.fr/api/auth/";
 
-const register = (username, email, password) => {
-  return axios.post(API_URL + "signup", {
-    username,
-    email,
-    password,
-  });
+const register = async (userName, email, password, password2, age) => {
+  try {
+    const response = await axios.post(API_URL_AUTH + "register", {
+      userName,
+      email,
+      password,
+      password2,
+      age,
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response.data.error);
+  }
 };
 
-const login = (username, password) => {
-  return axios
-    .post(API_URL + "signin", {
-      username,
+const login = async (email, password) => {
+  try {
+    const response = await axios.post(API_URL_AUTH + "login", {
+      email,
       password,
-    })
-    .then((response) => {
-      if (response.data.username) {
-        localStorage.setItem("user", JSON.stringify(response.data));
-      }
-
-      return response.data;
     });
+    if (response.data) {
+      localStorage.setItem("user", JSON.stringify(response.data));
+    }
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response.data.error);
+  }
 };
 
 const logout = () => {
   localStorage.removeItem("user");
-  return axios.post(API_URL + "signout").then((response) => {
-    return response.data;
-  });
 };
 
 const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem("user"));
+  const user = localStorage.getItem("user");
+  if (user) {
+    return JSON.parse(user);
+  }
+  return null;
 };
 
 const AuthService = {
@@ -41,6 +49,6 @@ const AuthService = {
   login,
   logout,
   getCurrentUser,
-}
+};
 
 export default AuthService;
