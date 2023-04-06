@@ -1,277 +1,338 @@
-
 h1.title {
-    font-size: 28px;
-    font-weight: 600;
-    display: table;
-    margin: auto;
-    margin-left: 0;
+  font-size: 28px;
+  font-weight: 794 !important;
+  display: table;
+}
+
+.blue-container {
+  min-height: 200px;
+  background-color: #e8f7f7;
 }
 .destination {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 2rem;
 }
 .search {
-    display: table;
-    width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .search-destination {
-    display: inherit;
-    margin: auto;
-    margin-left: 0;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 2rem;
-    border: 1px solid #D9D9D9;
-    padding: 0.3rem 0.5rem 0.3rem 0.5rem;
-    border-radius: 2rem;
-    box-shadow: 0px 12px 18px rgba(0, 0, 0, 0.05);
+  display: inherit;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+  width: 744px;
+  height: 74px;
+  background: #ffffff;
+  border: 1px solid rgba(23, 159, 159, 0.1);
+  box-shadow: 0px 3px 6px rgba(6, 39, 39, 0.2);
+  border-radius: 37px;
 }
-.search-destination input, .search-destination .react-datepicker-wrapper {
-    display: inline-flex;
-    border-right: 1px solid #D9D9D9;
-    border-radius: 0;
-    margin: 0 0.2rem;
-    padding-left: 0.3rem;
-    font-size: 15px;
-    font-weight: 500;
-    max-height: 40px;
-    width: 10rem;
+.search-destination input,
+.search-destination .react-datepicker-wrapper {
+  display: inline-flex;
+  border-right: 1px solid rgba(23, 159, 159, 0.1);
+  border-radius: 0;
+  margin: 0 0.2rem;
+  padding-left: 0.3rem;
+  font-size: 15px;
+  font-weight: 500 !important;
+  max-height: 60px;
+  width: 12rem;
 }
 .search-destination .react-datepicker-wrapper {
-    border-right: none !important;
+  border-right: none !important;
 }
 .react-datepicker-wrapper input {
-    border: none;
-    background-color: transparent;
-    width: 100%;
-    height: 100%;
-    font-size: 15px;
-    font-weight: 500;
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  font-size: 15px;
+  font-weight: 500 !important;
 }
 .react-datepicker-wrapper button {
-    background-color: white !important;
+  background-color: white !important;
 }
 
 .search-destination input:focus {
-    outline: none !important;
+  outline: none !important;
 }
 .search-destination button.search-btn {
-    border-radius: 2rem;
-    margin: 0 0.2rem;
-    background-color: #3B2F6B;
-    color: white;
-    width: 9rem;
-    height: 2.5rem !important;
-    min-height: 1rem !important;
-    font-size: 14px;
-    text-transform: capitalize;
+  border-radius: 2rem;
+  margin: 0 0.2rem;
+  background-color: #3b2f6b;
+  color: white;
+  width: 9rem;
+  height: 3rem !important;
+  min-height: 2.5rem !important;
+  font-size: 14px;
+  text-transform: capitalize;
 }
 .react-datepicker__tab-loop {
-    position: absolute;
+  position: absolute;
 }
-.add-new {
-    display: flex;
-    width: 30%;
+.road {
+  flex-direction: row;
+  justify-content: space-between;
+  display: flex;
+  border-bottom: 2px solid #e8f5f5;
 }
-.add-new .btn-outline {
-    color: #9966FE;
-    text-transform: none;
-    font-weight: 500;
-    margin: auto;
-    display: flex;
-    transition: 1s;
+.road-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
 }
-.add-new .btn-outline:hover {
-    background-color: #ece3ff7e;
-    border-color: #9966FE;
-    transition: 0.8s;
+.road-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.add-new .btn-outline:hover svg {
-    transform: rotate(180deg);
-    transition: 0.5s;
+.container-title-dashboardList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 25px;
 }
-.add-new .btn-outline svg {
-    margin-right: 1.5rem;
-    font-size: 22px;
-}
+
+// .add-new {
+//   display: flex;
+//   width: 30%;
+// }
+// .add-new .btn-outline {
+//   color: #9966fe;
+//   text-transform: none;
+//   font-weight: 500;
+//   margin: auto;
+//   display: flex;
+//   transition: 1s;
+// }
+// .add-new .btn-outline:hover {
+//   background-color: #ece3ff7e;
+//   border-color: #9966fe;
+//   transition: 0.8s;
+// }
+// .add-new .btn-outline:hover svg {
+//   transform: rotate(180deg);
+//   transition: 0.5s;
+// }
+// .add-new .btn-outline svg {
+//   margin-right: 1.5rem;
+//   font-size: 22px;
+// }
 
 @media (max-width: 1024px) {
-    .search {
-        width: 95%;
-        margin: auto;
-    }
-    .destination {
-        flex-direction: column;
-    }
-    .add-new {
-        margin-top: 3rem;
-        width: 100%;
-    }
-    .road-card {
-        width: 100% !important;
-        margin: 2rem auto;
-    }
+  .search {
+    width: 95%;
+    margin: auto;
+  }
+  .destination {
+    flex-direction: column;
+  }
+  .add-new {
+    margin-top: 3rem;
+    width: 100%;
+  }
+  .road-card {
+    width: 100% !important;
+    margin: 2rem auto;
+  }
 }
 @media (max-width: 768px) {
-    h1.title {
-        margin: auto;
-    }
-    .search-destination {
-        display: flex;
-        flex-direction: column;
-        width: fit-content;
-        margin: auto;
-        margin-top: 2rem;
-        padding: 1rem;
-    }
-    .search-destination input, .search-destination .react-datepicker-wrapper {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid #D9D9D9;
-        margin-bottom: 0.5rem;
-        margin-top: 0.5rem;
-    }
-    .search-destination .react-datepicker-wrapper input {
-        border-bottom: none !important;
-    }
-    .search-destination button {
-        width: 100%;
-        margin-bottom: 0.5rem;
-        margin-top: 1rem !important;
-    }
-    .road-card {
-        width: 80% !important;
-    }
-}
-@media (max-width: 380px) {
-    .road-card p {
-        font-size: 14px !important;
-    }
-    .road-card span {
-        margin-right: 0.4rem !important;
-    }
-}
-@media (min-width: 1536px) {
-    .container {
-        max-width: 1000px !important;
-    }
-}
-
-// ROAD LIST
-.road-card {
-    background: #FFFFFF;
-    border: 1px solid #D9D9D9;
-    border-radius: 14px;
-    display: flex;
-    width: 50%;
-    max-width: 35rem;
-    justify-content: space-between;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    flex-direction: row;
-    margin-top: 2rem;
-    transition: 0.3s;
-    cursor: pointer;
-}
-.road-card:first-child {
-    margin-top: 5rem;
-}
-.road-card:hover {
-    box-shadow: 0px 12px 22px rgba(0, 0, 0, 0.16);
-    transition: 0.5s;
-}
-.road-info {
-    width: 65%;
-    padding: 0.5rem;
-}
-li.step {
-    min-height: 3rem !important;
-}
-li.step::after {
-    background-color: #F2F2F3 !important;
-    width: 16px !important;
-    height: 16px !important;
-    border: 3px solid #59C3C3;
-}
-li.step:last-of-type::after {
-    background-color: #59C3C3 !important;
-    width: 16px !important;
-    height: 16px !important;
-    border: 3px solid #F2F2F3;
-}
-li.step::before {
-    background-color: #F2F2F3 !important;
-    width: 4px !important;
-}
-li.step div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-li.step div p{
-    font-weight: 500;
-}
-li.step div span {
-    color: #59C3C3;
-    margin-right: 1rem;
-}
-.seat {
-    background-color: #9966FE1C;
-    display: flex;
-    align-items: center;
-    width: fit-content;
-    padding: 0.2rem 0.3rem;
-    border-radius: 10px;
-    margin: 0.5rem 0 0.5rem 0.8rem;
-}
-.seat svg {
-    color: #9966FE;
-    font-size: 1.5rem;
-    margin-right: 0.2rem;
-}
-.seat p {
-    color: #9966FE;
-    font-weight: 500;
-    font-size: 15px;
-}
-.driver-info {
-    width: 35%;
-    padding: 0.5rem;
+  h1.title {
+    margin: auto;
+  }
+  .search-destination {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    width: fit-content;
+    margin: auto;
+    margin-top: 2rem;
+    padding: 1rem;
+  }
+  .search-destination input,
+  .search-destination .react-datepicker-wrapper {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #d9d9d9;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .search-destination .react-datepicker-wrapper input {
+    border-bottom: none !important;
+  }
+  .search-destination button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem !important;
+  }
+  .road-card {
+    width: 80% !important;
+  }
+}
+@media (max-width: 380px) {
+  .road-card p {
+    font-size: 14px !important;
+  }
+  .road-card span {
+    margin-right: 0.4rem !important;
+  }
+}
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1000px !important;
+  }
+}
+
+/////////////////////////////////////////////////// ROAD LIST
+.road-card {
+  background: #ffffff;
+  border: 1px solid rgba(23, 159, 159, 0.1);
+  box-shadow: 0px 3px 6px rgba(6, 39, 39, 0.2);
+  border-radius: 14px;
+  display: flex;
+  width: 100%;
+  min-width: 35rem;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 2rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.road-list p {
+  font-weight: 794 !important;
+  font-size: 22px;
+}
+
+.road-card:hover {
+  box-shadow: 0px 12px 22px rgba(0, 0, 0, 0.16);
+  transition: 0.5s;
+}
+.road-info {
+  width: 100%;
+  padding: 0.3rem 1.1rem;
+}
+.road-left-details {
+  display: flex !important;
+  flex-direction: column !important;
+  padding-top: 1rem;
+}
+.steps-vertical .step {
+  gap: 0.5rem;
+  grid-template-columns: 19px 1fr;
+  grid-template-rows: 54px;
+  min-height: 4rem;
+  justify-items: start;
+}
+
+li.step {
+  min-height: 3rem !important;
+}
+li.step::after {
+  background-color: #ffffff !important;
+  width: 16px !important;
+  height: 16px !important;
+  border: 3px solid #179f9f;
+}
+li.step:last-of-type::after {
+  background-color: #ffffff !important;
+  width: 16px !important;
+  height: 16px !important;
+  border: 3px solid #179f9f;
+}
+li.step::before {
+  background-color: #a2d9d9 !important;
+  width: 2px !important;
+}
+li.step div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+li.step div p {
+  font-weight: 794 !important;
+  font-size: 16px;
+  font-family: SF Compact Rounded;
+}
+li.step div span {
+  font-weight: 556 !important;
+  font-size: 15px;
+  color: #179f9f;
+  margin-right: 1rem;
+}
+.road-left-details p {
+  font-weight: 556 !important;
+  font-size: 13px;
+  color: #715bc8;
+  margin-right: 1rem;
+}
+
+.seat {
+  background-color: #f4eeff;
+
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  padding: 5px 11px;
+  border-radius: 20px;
+  margin: 0.5rem 0 0.5rem 0.8rem;
+}
+.seat svg {
+  color: #715bc8;
+  font-size: 1.5rem;
+  margin-right: 0.2rem;
+}
+.seat p {
+  color: #715bc8;
+  font-weight: 556;
+  font-size: 13px;
+}
+.driver-info {
+  padding-left: 0px !important;
+  width: 35%;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-direction: row;
 }
 .driver {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    margin-right: 1rem;
-    line-height: initial;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  margin-right: 1rem;
+  line-height: initial;
 }
 .driver div {
-    margin-right: 0.2rem;
+  margin-left: 0.3rem;
 }
 .driver p {
-    font-weight: 500;
-    font-size: 16px;
+  font-weight: 600 !important;
+  font-size: 15px;
+  margin: 0px
 }
 .driver span {
-    color: #6E6E73;
-    text-align: right;
-    font-size: 15px;
+    font-weight: 600 !important;
+  color: #715BC8;
+  text-align: right;
+  font-size: 13px;
 }
 .driver svg {
-    font-size: 3.5rem;
-    color: #D9D9D9;
-    min-width: 2rem;
+  font-size: 3.5rem;
+  color: #d9d9d9;
+  min-width: 2rem;
 }
 .price {
-    width: fit-content;
-    display: flex;
-    align-self: end;
-    margin-right: 2rem;
-    margin-top: 0.5rem;
-    font-weight: 600;
-    font-size: 18px;
+  width: fit-content;
+  display: flex;
+  align-self: end;
+  margin-right: 2rem;
+  margin-top: 0.5rem;
+  font-weight: 600 !important;
+  font-size: 18px;
 }

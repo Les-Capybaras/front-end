@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'SF Compact Rounded';
+    src: url('SFCompactRounded-Ultralight.woff2') format('woff2'),
+        url('SFCompactRounded-Ultralight.woff') format('woff');
+    font-style: normal;
+    font-display: swap;
+}
+

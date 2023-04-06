@@ -4,7 +4,7 @@ import { useState } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { IoPersonCircleSharp } from "react-icons/io5";
-import { IoPeopleOutline } from "react-icons/io5";
+import { MdAirlineSeatReclineNormal } from "react-icons/md";
 import fr from "date-fns/locale/fr";
 registerLocale("fr", fr);
 
@@ -22,102 +22,75 @@ const Datepicker = () => {
 
 export default function Dashboard() {
   return (
-    <div className="container d-flex mx-auto">
-      <div className="destination">
-        <div className="search">
-          <h1 className="title">Où voulez-vous allez ?</h1>
-          <div className="search-destination">
-            <input
-              type="text"
-              placeholder="Départ"
-              className="input input-ghost max-w-xs"
-            />
+    <div className="d-flex">
+      <div className="blue-container d-flex">
+        <div className="destination">
+          <div className="search">
+            <h1 className="title">Où voulez-vous allez ?</h1>
+            <div className="search-destination">
+              <input
+                type="text"
+                placeholder="Départ"
+                className="input input-ghost max-w-xs"
+              />
 
-            <input
-              type="text"
-              placeholder="Arrivé"
-              className="input input-ghost max-w-xs"
-            />
+              <input
+                type="text"
+                placeholder="Arrivé"
+                className="input input-ghost max-w-xs"
+              />
 
-            {/* <input type="text" placeholder="Quand ?" className="input input-ghost max-w-xs" /> */}
+              {/* <input type="text" placeholder="Quand ?" className="input input-ghost max-w-xs" /> */}
 
-            <Datepicker />
+              <Datepicker />
 
-            <button className="search-btn btn">Rechercher</button>
+              <button className="search-btn btn">Rechercher</button>
+            </div>
           </div>
-        </div>
-        <div className="add-new">
-          <button className="btn btn-outline">
-            <IoAddCircleOutline />
-            Proposer un nouveau trajet
-          </button>
         </div>
       </div>
+
       <div className="road-list">
-        <div className="road-card">
-          <div className="road-info">
-            <div className="road">
-              <ul className="steps steps-vertical">
-                <li data-content="" className="step step-primary">
-                  <div>
-                    <span>12:10</span>
-                    <p>Nantes</p>
+        <div className="container-title-dashboardList">
+          <p>Trajets qui pourrait vous intéresser</p>
+          <div className="road-card">
+            <div className="road-info">
+              <div className="road">
+                <ul className="steps steps-vertical">
+                  <li data-content="" className="step step-primary">
+                    <div>
+                    <div className="road-left-details">
+                      <span>12:10</span>
+                      <p>3h30</p>
+                    </div>
+                      
+                      <p>Nantes</p>
+                    </div>
+                    
+                  </li>
+                  <li data-content="" className="step step-primary">
+                    <div>
+                      <span>15:30</span>
+                      <p>Paris</p>
+                    </div>
+                  </li>
+                </ul>
+                <div className="road-details">
+                  <p>85.00€</p>
+                  <div className="seat">
+                    <MdAirlineSeatReclineNormal />
+                    <p>2 places disponibles</p>
                   </div>
-                </li>
-                <li data-content="" className="step step-primary">
-                  <div>
-                    <span>15:30</span>
-                    <p>Paris</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div className="seat">
-              <IoPeopleOutline />
-              <p>1 / 3</p>
-            </div>
-          </div>
-          <div className="driver-info">
-            <div className="price">85€</div>
-            <div className="driver">
-              <IoPersonCircleSharp />
-              <div>
-                <p>Antoine</p>
-                <span>22 ans</span>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div className="road-card">
-          <div className="road-info">
-            <div className="road">
-              <ul className="steps steps-vertical">
-                <li data-content="" className="step step-primary">
+              <div className="driver-info">
+                <div className="driver">
                   <div>
-                    <span>12:10</span>
-                    <p>Nantes</p>
+                    <p>Antoine</p>
+                    <span>22 ans</span>
                   </div>
-                </li>
-                <li data-content="" className="step step-primary">
-                  <div>
-                    <span>15:30</span>
-                    <p>Paris</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div className="seat">
-              <IoPeopleOutline />
-              <p>1 / 3</p>
-            </div>
-          </div>
-          <div className="driver-info">
-            <div className="price">85€</div>
-            <div className="driver">
-              <IoPersonCircleSharp />
-              <div>
-                <p>Antoine</p>
-                <span>22 ans</span>
+                  <IoPersonCircleSharp />
+                </div>
               </div>
             </div>
           </div>
