@@ -9,18 +9,29 @@ import { IoMenu } from "react-icons/io5";
 import { IoChevronDownOutline } from "react-icons/io5";
 import { IoPlus } from "react-icons/io5";
 import { HiPlus } from "react-icons/hi";
-
+import AuthService from '../../services/auth.service';
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+
+  const navigate = useNavigate();
+
   const handleResponsive = () => {
     console.log("123");
   };
+
+  const handleDisconnect = () => {
+    AuthService.logout();
+    navigate("/auth");
+    window.location.reload();
+  }
 
   const [profilSwitch, setProfilSwitch] = React.useState(true);
 
   const location = useLocation();
   const { pathname } = location;
   const splitLocation = pathname.split("/")[1];
+
   return (
     <div className="navbar bg-base-100">
       <div className="header-logo">
@@ -53,7 +64,7 @@ export default function Header() {
             <IoChevronDownOutline />
           </a>
         
-        <ul tabindex="0" class="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4">
+        <ul tabIndex="0" className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4">
           <li><label htmlFor="setting-modal"><IoSettingsSharp /> Paramètres </label></li> 
           <li><label htmlFor="dc-modal"><BiLogOutCircle />Deconnexion</label></li>
         </ul>
@@ -63,9 +74,9 @@ export default function Header() {
       <input type="checkbox" id="dc-modal" className="modal-toggle" />
       <label htmlFor="dc-modal" className="modal cursor-pointer">
         <label className="modal-box relative" htmlFor="">
-        <label for="dc-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+        <label htmlFor="dc-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
           <h3 className="text-lg font-bold">Êtes vous sûr de vouloir vous déconnectez ?</h3>
-          <button class="d-flex mt-5 btn btn-error">Deconnexion</button>
+          <button onClick={() => handleDisconnect()} className="d-flex mt-5 btn btn-error">Deconnexion</button>
         </label>
       </label>
 
@@ -108,12 +119,12 @@ export default function Header() {
           </div>
           {profilSwitch 
             ? (
-              <button onClick={() => setProfilSwitch(!profilSwitch)} class="d-flex mt-3 btn btn-primary">Modifier</button>
+              <button onClick={() => setProfilSwitch(!profilSwitch)} className="d-flex mt-3 btn btn-primary">Modifier</button>
             ) : (
-            <div class="d-flex">
-              <button onClick={() => setProfilSwitch(!profilSwitch)} class="d-flex mt-3 btn ">Annuler</button>
+            <div className="d-flex">
+              <button onClick={() => setProfilSwitch(!profilSwitch)} className="d-flex mt-3 btn ">Annuler</button>
 
-              <button onClick={() => setProfilSwitch(!profilSwitch)} class="d-flex mt-3 ml-3 btn btn-outline btn-primary">Enregistrer</button>
+              <button onClick={() => setProfilSwitch(!profilSwitch)} className="d-flex mt-3 ml-3 btn btn-outline btn-primary">Enregistrer</button>
             </div>
           )}
           
