@@ -100,7 +100,7 @@ export default function Login({ handleLoginSwitch }) {
           <label className="justify-center label">
             <a className="forgotLabel link-hover">Mot de passe oublié?</a>
           </label>
-          <div class="divider ma-0"></div> 
+          <div className="divider ma-0"></div> 
           <div className=" flex justify-center align-center">
             <p className="newAccount">Vous n'avez pas encore de compte ?</p>
             <a

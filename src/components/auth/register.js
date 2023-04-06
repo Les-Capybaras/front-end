@@ -168,7 +168,7 @@ export default function Register({ handleLoginSwitch }) {
           <label className="justify-center label">
             <a className="forgotLabel link-hover">Mot de passe oublié?</a>
           </label>
-          <div class="divider"></div> 
+          <div className="divider"></div> 
           <div className=" flex justify-center align-center">
             <p className="newAccount">Vous avez déjà un compte ?</p>
             <a

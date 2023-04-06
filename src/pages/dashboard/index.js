@@ -22,7 +22,7 @@ const Datepicker = () => {
 
 export default function Dashboard() {
   return (
-    <div className="container d-flex mx-auto">
+    <div className="container d-flex mx-auto flex-column">
       <div className="destination">
         <div className="search">
           <h1 className="title">Où voulez-vous allez ?</h1>

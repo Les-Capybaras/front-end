@@ -4,3 +4,10 @@
 @import "./component/register.scss";
 
 // @import "./base/_fonts.scss";
+
+.d-flex {
+    display: flex;
+}
+.flex-column {
+    flex-direction: column;
+}
