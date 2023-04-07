@@ -2,6 +2,7 @@ import React from 'react';
 import  './assets/style/main.scss';
 import Layout from './layout/layout';
 import Auth from './pages/auth';
+import AppContext from "./context";
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Dashboard from './pages/dashboard/index';
@@ -41,8 +42,8 @@ function App() {
     <>
       {currentUser
         ? (
-          <>
-            <Layout currentUser={currentUser} />
+          <AppContext.Provider value={{ currentUser, setCurrentUser }}>
+            <Layout />
             <Routes>  
               <Route>
                 <Route path="/dashboard" element={<Dashboard />} exact />
@@ -50,9 +51,8 @@ function App() {
                 <Route path="/road" element={<Road />} />
               </Route>
             </Routes>
-          </>
-        )  
-        : (
+          </AppContext.Provider>
+        ) : (
           <Routes>  
             <Route>
               <Route path="/auth" element={<Auth/>} exact />

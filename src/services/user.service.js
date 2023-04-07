@@ -1,28 +1,23 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/api/test/";
+const API_URL_AUTH = "http://back.papotcar.ismadev.fr/api/auth/";
 
-const getPublicContent = () => {
-  return axios.get(API_URL + "all");
-};
-
-const getUserBoard = () => {
-  return axios.get(API_URL + "user");
-};
-
-const getModeratorBoard = () => {
-  return axios.get(API_URL + "mod");
-};
-
-const getAdminBoard = () => {
-  return axios.get(API_URL + "admin");
+const edit = async (id, username) => {
+  try {
+    const response = await axios.put(API_URL_AUTH + "user/", {
+      username,
+    });
+    if (response.data) {
+      localStorage.setItem("user", JSON.stringify(response.data));
+    }
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response.data.error);
+  }
 };
 
 const UserService = {
-  getPublicContent,
-  getUserBoard,
-  getModeratorBoard,
-  getAdminBoard,
+  edit
 }
 
 export default UserService;
