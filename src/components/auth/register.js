@@ -188,7 +188,7 @@ export default function Register({ handleLoginSwitch }) {
           <div className="form-control">
             <input
               type="password"
-              placeholder="Mot de passe"
+              placeholder="Confirmer le mot de passe"
               required
               className="input input-bordered my-2"
               v-model="password"
