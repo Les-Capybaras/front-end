@@ -1,6 +1,6 @@
 import React, { useContext, useState, useRef } from "react";
 import AppContext from "../../context";
-import AuthService from '../../services/auth.service';
+import AuthService from "../../services/auth.service";
 import UserService from "../../services/user.service";
 import { useNavigate } from "react-router-dom";
 import Form from "react-validation/build/form";
@@ -8,8 +8,9 @@ import CheckButton from "react-validation/build/button";
 
 import { IoChevronDownOutline } from "react-icons/io5";
 import { IoPersonCircleSharp } from "react-icons/io5";
-import { IoSettingsSharp } from "react-icons/io5";
-import { BiLogOutCircle } from "react-icons/bi";
+import { FiLogOut } from "react-icons/fi";
+import { FiSettings } from "react-icons/fi";
+import { IoClose } from "react-icons/io5";
 
 export default function Profile() {
   const { currentUser } = useContext(AppContext);
@@ -22,7 +23,7 @@ export default function Profile() {
     AuthService.logout();
     navigate("/auth");
     window.location.reload();
-  }
+  };
 
   const [profilSwitch, setProfilSwitch] = React.useState(true);
   const [username, setUsername] = useState("");
@@ -40,7 +41,7 @@ export default function Profile() {
 
     setMessage("");
     setLoading(true);
-    console.log('147')
+    console.log("147");
 
     form.current.validateAll();
 
@@ -68,20 +69,35 @@ export default function Profile() {
 
   return (
     <>
-      <div tabIndex="0" className="header-profil dropdown dropdown-bottom dropdown-end">
-          <a className="profil normal-case text-xl">
-            <IoPersonCircleSharp />
-            <div>
-              <p>{currentUser.user.userName}</p>
-            </div>
-          </a>
-          <a className="settings normal-case text-xl">
-            <IoChevronDownOutline />
-          </a>
-        
-        <ul tabIndex="0" className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4">
-          <li><label htmlFor="setting-modal"><IoSettingsSharp /> Paramètres </label></li> 
-          <li><label htmlFor="dc-modal"><BiLogOutCircle />Deconnexion</label></li>
+      <div
+        tabIndex="0"
+        className="header-profil dropdown dropdown-bottom dropdown-end"
+      >
+        <a className="profil normal-case text-xl">
+          <IoPersonCircleSharp />
+          <div>
+            <p>{currentUser.user.userName}</p>
+          </div>
+        </a>
+        <a className="settings normal-case text-xl">
+          <IoChevronDownOutline />
+        </a>
+
+        <ul
+          tabIndex="0"
+          className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4"
+        >
+          <li>
+            <label htmlFor="setting-modal" className="header-dropdown-list">
+              <FiSettings /> Paramètres{" "}
+            </label>
+          </li>
+          <li>
+            <label htmlFor="dc-modal" className="header-dropdown-list-logout">
+              <FiLogOut />
+              Deconnexion
+            </label>
+          </li>
         </ul>
       </div>
 
@@ -89,18 +105,37 @@ export default function Profile() {
       <input type="checkbox" id="dc-modal" className="modal-toggle" />
       <label htmlFor="dc-modal" className="modal cursor-pointer">
         <label className="modal-box relative" htmlFor="">
-        <label htmlFor="dc-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-          <h3 className="text-lg font-bold">Êtes vous sûr de vouloir vous déconnectez ?</h3>
-          <button onClick={() => handleDisconnect()} className="flex mt-5 btn btn-error">Deconnexion</button>
+          <div className="title-modal-dc">
+            <label
+              htmlFor="dc-modal"
+              className="btn btn-circle btn-outline btn-sm"
+            >
+              <IoClose />
+            </label>
+            <h3 className="text-lg font-bold">
+              Êtes vous sûr de vouloir vous déconnecter ?
+            </h3>
+          </div>
+
+          <button
+            onClick={() => handleDisconnect()}
+            className="flex mt-5 btn btn-ghost dc-btn"
+          >
+            Deconnexion
+          </button>
         </label>
       </label>
-
 
       {/* SETTINGS PROFILE MODAL */}
       <input type="checkbox" id="setting-modal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative">
-          <label htmlFor="setting-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+          <label
+            htmlFor="setting-modal"
+            className="btn btn-sm btn-circle absolute right-2 top-2"
+          >
+            ✕
+          </label>
           <h3 className="text-lg font-bold">Mon profil</h3>
           <div className="py-4 flex">
             <div className="avatar">
@@ -109,14 +144,15 @@ export default function Profile() {
               </div>
             </div>
             <div className="form-control ml-3 text-2xl font-bold">
-              {profilSwitch 
-              ? (
+              {profilSwitch ? (
                 <>
                   <label className="firstname">
                     <span className="label-text">Prénom</span>
                   </label>
                   <label className="lastname">
-                    <span className="label-text">{currentUser.user.userName}</span>
+                    <span className="label-text">
+                      {currentUser.user.userName}
+                    </span>
                   </label>
                   <label className="email">
                     <span className="label-text">{currentUser.user.email}</span>
@@ -124,33 +160,51 @@ export default function Profile() {
                 </>
               ) : (
                 <>
-                <Form onSubmit={handleEdit} ref={form}>
-                  {/* <input type="text" placeholder="Prénom" className="input input-bordered input-xs w-full max-w-xs mt-2" /> */}
-                  <input type="text" placeholder={currentUser.user.userName}  onChange={onChangeName} className="input input-bordered input-xs w-full max-w-xs mt-2" />
-                  <label className="email">
-                    <span className="label-text">{currentUser.user.email}</span>
-                  </label>
-                  <CheckButton style={{ display: "none" }} ref={checkBtn} />
-                </Form>
+                  <Form onSubmit={handleEdit} ref={form}>
+                    {/* <input type="text" placeholder="Prénom" className="input input-bordered input-xs w-full max-w-xs mt-2" /> */}
+                    <input
+                      type="text"
+                      placeholder={currentUser.user.userName}
+                      onChange={onChangeName}
+                      className="input input-bordered input-xs w-full max-w-xs mt-2"
+                    />
+                    <label className="email">
+                      <span className="label-text">
+                        {currentUser.user.email}
+                      </span>
+                    </label>
+                    <CheckButton style={{ display: "none" }} ref={checkBtn} />
+                  </Form>
                 </>
               )}
-              
             </div>
           </div>
-          {profilSwitch 
-            ? (
-              <button onClick={() => setProfilSwitch(!profilSwitch)} className="flex mt-3 btn btn-primary">Modifier</button>
-            ) : (
+          {profilSwitch ? (
+            <button
+              onClick={() => setProfilSwitch(!profilSwitch)}
+              className="flex mt-3 btn btn-primary"
+            >
+              Modifier
+            </button>
+          ) : (
             <div className="flex">
-              <button onClick={() => setProfilSwitch(!profilSwitch)} className="flex mt-3 btn ">Annuler</button>
+              <button
+                onClick={() => setProfilSwitch(!profilSwitch)}
+                className="flex mt-3 btn "
+              >
+                Annuler
+              </button>
 
-              <button onClick={() => setProfilSwitch(!profilSwitch)} className="flex mt-3 ml-3 btn btn-outline btn-primary">Enregistrer</button>
+              <button
+                onClick={() => setProfilSwitch(!profilSwitch)}
+                className="flex mt-3 ml-3 btn btn-outline btn-primary"
+              >
+                Enregistrer
+              </button>
             </div>
           )}
-          
         </div>
       </div>
     </>
   );
-};
-
+}
