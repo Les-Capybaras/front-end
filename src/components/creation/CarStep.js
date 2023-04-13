@@ -11,6 +11,10 @@ export const CarStep = (props) => {
     const [from, setFrom] = useState("");
     const [to, setTo] = useState("");
 
+    const onChangePrice = (e) => {
+        const price = e.target.value;
+        setPrice(price);
+    };
     const onChangeFrom = (e) => {
         const from = e.target.value;
         setFrom(from);
@@ -68,7 +72,7 @@ export const CarStep = (props) => {
                 showIcon
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
-                locale="fr"
+                locale="fr-FR"
                 timeInputLabel="Time:"
                 dateFormat="dd/MM/yyyy h:mm aa"
                 datepickerAutohide
@@ -89,7 +93,7 @@ export const CarStep = (props) => {
                 </label>
                 <label className="input-group">
                     {/* <span>Price</span> */}
-                    <input type="text" placeholder="00" className="input input-bordered" />
+                    <input value={price} onChange={onChangePrice} type="text" placeholder="00" className="input input-bordered" />
                     {/* <span>EUR</span> */}
                 </label>
             </div>

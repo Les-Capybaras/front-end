@@ -11,7 +11,6 @@ const register = async (firstname, lastname, email, password, password2) => {
       password,
       password2,
     });
-    console.log(response.data)
     return response.data;
   } catch (error) {
     throw new Error(error.response.data.error);

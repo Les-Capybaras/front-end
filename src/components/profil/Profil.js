@@ -5,11 +5,10 @@ import UserService from "../../services/user.service";
 import { useNavigate } from "react-router-dom";
 import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";
-
+import { IoSettingsSharp } from "react-icons/io5";
+import { BiLogOutCircle } from "react-icons/bi";
 import { IoChevronDownOutline } from "react-icons/io5";
 import { IoPersonCircleSharp } from "react-icons/io5";
-import { FiLogOut } from "react-icons/fi";
-import { FiSettings } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 
 export default function Profile() {
