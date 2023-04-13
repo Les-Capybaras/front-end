@@ -36,7 +36,7 @@ export default function Dashboard() {
       body: JSON.stringify({
         startLocation: searchStart,
         endLocation: searchEnd,
-        startDate: startDate,
+        startDate: startDate.setHours(0, 0),
       }),
     }).then((response) => {
       return response.json();
@@ -48,7 +48,7 @@ export default function Dashboard() {
   };
 
   useEffect(() => {
-    fetch(`http://back.papotcar.ismadev.fr/api/trips`, {
+    fetch(`http://back.papotcar.ismadev.fr/api/trips/available`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
