@@ -1,10 +1,8 @@
 import "../../assets/style/page/dashboard.scss";
-import { IoAddCircleOutline } from "react-icons/io5";
-import { useState } from "react";
+import { useState, useEffect }from "react";
+import RoadCard from '../../components/dashboard/RoadCard';
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { IoPersonCircleSharp } from "react-icons/io5";
-import { MdAirlineSeatReclineNormal } from "react-icons/md";
 import fr from "date-fns/locale/fr";
 registerLocale("fr", fr);
 
@@ -21,6 +19,26 @@ const Datepicker = () => {
 };
 
 export default function Dashboard() {
+  const [trips, setTrips] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://back.papotcar.ismadev.fr/api/trips`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    }).then((response) => {
+      return response.json();
+      }
+    )
+    .then((response) => {
+      console.log(response);
+      setTrips(response);
+    });
+  }, []);
+
+
   return (
     <div className="">
       <div className="blue-container">
@@ -53,47 +71,9 @@ export default function Dashboard() {
       <div className="road-list">
         <div className="container-title-dashboardList">
           <p>Trajets qui pourrait vous intéresser</p>
-          <div className="road-card">
-            <div className="road-info">
-              <div className="road">
-                <ul className="steps steps-vertical">
-                  <li data-content="" className="step step-primary">
-                    <div>
-                    <div className="road-left-details">
-                      <span>12:10</span>
-                      <p>3h30</p>
-                    </div>
-                      
-                      <p>Nantes</p>
-                    </div>
-                    
-                  </li>
-                  <li data-content="" className="step step-primary">
-                    <div>
-                      <span>15:30</span>
-                      <p>Paris</p>
-                    </div>
-                  </li>
-                </ul>
-                <div className="road-details">
-                  <p>85.00€</p>
-                  <div className="seat">
-                    <MdAirlineSeatReclineNormal />
-                    <p>2 places disponibles</p>
-                  </div>
-                </div>
-              </div>
-              <div className="driver-info">
-                <div className="driver">
-                  <div>
-                    <p>Antoine</p>
-                    <span>22 ans</span>
-                  </div>
-                  <IoPersonCircleSharp />
-                </div>
-              </div>
-            </div>
-          </div>
+          {trips.map((trip) => (
+            <RoadCard trip={trip} key={trip.id} />
+          ))}
         </div>
       </div>
     </div>
