@@ -44,6 +44,8 @@ const getCurrentUser = () => {
   return null;
 };
 
+
+
 const AuthService = {
   register,
   login,

@@ -1,7 +1,7 @@
 export default function History() {
 
     return (    
-        <div className="d-flex ">
+        <div className="flex ">
             History
         </div>
     )
