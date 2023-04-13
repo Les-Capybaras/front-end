@@ -24,7 +24,7 @@ export default function Header() {
       <div className="header-link">
         <ul className="menu menu-horizontal px-1">
           <li className={splitLocation === "" ? "active" : ""}>
-            <Link to="/">Accueil</Link>
+            <Link to="/dashboard">Accueil</Link>
           </li>
           <li className={splitLocation === "road" ? "active" : ""}>
             <Link to="/road">Mes Trajets</Link>
@@ -32,10 +32,10 @@ export default function Header() {
         </ul>
       </div>
       <div>
-        <button className="btn btn-ghost btn-new-trajectory">
-          <HiPlus />
-          Nouveau trajet
-        </button>
+          <Link className="btn btn-ghost btn-new-trajectory" to="/creation">
+            <HiPlus />
+            Nouveau trajet
+          </Link>
       </div>
       
       <Profile />
