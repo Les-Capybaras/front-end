@@ -204,6 +204,9 @@ h1.title {
   transition: 0.3s;
   cursor: pointer;
 }
+.road-card:last-child {
+  margin-bottom: 4rem;
+}
 .road-list p {
   font-weight: 794 !important;
   font-size: 22px;
@@ -294,7 +297,7 @@ li.step div span {
 }
 .driver-info {
   padding-left: 0px !important;
-  width: 35%;
+  width: 100%;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
