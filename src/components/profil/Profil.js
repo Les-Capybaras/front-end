@@ -1,6 +1,6 @@
 import React, { useContext, useState, useRef } from "react";
 import AppContext from "../../context";
-import AuthService from '../../services/auth.service';
+import AuthService from "../../services/auth.service";
 import UserService from "../../services/user.service";
 import { useNavigate } from "react-router-dom";
 import Form from "react-validation/build/form";
@@ -8,8 +8,9 @@ import CheckButton from "react-validation/build/button";
 
 import { IoChevronDownOutline } from "react-icons/io5";
 import { IoPersonCircleSharp } from "react-icons/io5";
-import { IoSettingsSharp } from "react-icons/io5";
-import { BiLogOutCircle } from "react-icons/bi";
+import { FiLogOut } from "react-icons/fi";
+import { FiSettings } from "react-icons/fi";
+import { IoClose } from "react-icons/io5";
 
 export default function Profile() {
   const { currentUser } = useContext(AppContext);
@@ -22,7 +23,7 @@ export default function Profile() {
     AuthService.logout();
     navigate("/auth");
     window.location.reload();
-  }
+  };
 
   const [profilSwitch, setProfilSwitch] = React.useState(true);
   const [firstname, setFirstname] = useState("");
@@ -40,7 +41,7 @@ export default function Profile() {
 
     setMessage("");
     setLoading(true);
-    console.log('147')
+    console.log("147");
 
     form.current.validateAll();
 
@@ -89,18 +90,37 @@ export default function Profile() {
       <input type="checkbox" id="dc-modal" className="modal-toggle" />
       <label htmlFor="dc-modal" className="modal cursor-pointer">
         <label className="modal-box relative" htmlFor="">
-        <label htmlFor="dc-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-          <h3 className="text-lg font-bold">Êtes vous sûr de vouloir vous déconnectez ?</h3>
-          <button onClick={() => handleDisconnect()} className="flex mt-5 btn btn-error">Deconnexion</button>
+          <div className="title-modal-dc">
+            <label
+              htmlFor="dc-modal"
+              className="btn btn-circle btn-outline btn-sm"
+            >
+              <IoClose />
+            </label>
+            <h3 className="text-lg font-bold">
+              Êtes vous sûr de vouloir vous déconnecter ?
+            </h3>
+          </div>
+
+          <button
+            onClick={() => handleDisconnect()}
+            className="flex mt-5 btn btn-ghost dc-btn"
+          >
+            Deconnexion
+          </button>
         </label>
       </label>
-
 
       {/* SETTINGS PROFILE MODAL */}
       <input type="checkbox" id="setting-modal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative">
-          <label htmlFor="setting-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+          <label
+            htmlFor="setting-modal"
+            className="btn btn-sm btn-circle absolute right-2 top-2"
+          >
+            ✕
+          </label>
           <h3 className="text-lg font-bold">Mon profil</h3>
           <div className="py-4 flex">
             <div className="avatar">
@@ -109,8 +129,7 @@ export default function Profile() {
               </div>
             </div>
             <div className="form-control ml-3 text-2xl font-bold">
-              {profilSwitch 
-              ? (
+              {profilSwitch ? (
                 <>
                   <label className="firstname">
                     <span className="label-text">Prénom</span>
@@ -134,23 +153,34 @@ export default function Profile() {
                 </Form>
                 </>
               )}
-              
             </div>
           </div>
-          {profilSwitch 
-            ? (
-              <button onClick={() => setProfilSwitch(!profilSwitch)} className="flex mt-3 btn btn-primary">Modifier</button>
-            ) : (
+          {profilSwitch ? (
+            <button
+              onClick={() => setProfilSwitch(!profilSwitch)}
+              className="flex mt-3 btn btn-primary"
+            >
+              Modifier
+            </button>
+          ) : (
             <div className="flex">
-              <button onClick={() => setProfilSwitch(!profilSwitch)} className="flex mt-3 btn ">Annuler</button>
+              <button
+                onClick={() => setProfilSwitch(!profilSwitch)}
+                className="flex mt-3 btn "
+              >
+                Annuler
+              </button>
 
-              <button onClick={() => setProfilSwitch(!profilSwitch)} className="flex mt-3 ml-3 btn btn-outline btn-primary">Enregistrer</button>
+              <button
+                onClick={() => setProfilSwitch(!profilSwitch)}
+                className="flex mt-3 ml-3 btn btn-outline btn-primary"
+              >
+                Enregistrer
+              </button>
             </div>
           )}
-          
         </div>
       </div>
     </>
   );
-};
-
+}
