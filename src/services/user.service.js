@@ -2,10 +2,10 @@ import axios from "axios";
 
 const API_URL_AUTH = "http://back.papotcar.ismadev.fr/api/auth/";
 
-const edit = async (id, username) => {
+const edit = async (id, firstname) => {
   try {
     const response = await axios.put(API_URL_AUTH + "user/", {
-      username,
+      firstname,
     });
     if (response.data) {
       localStorage.setItem("user", JSON.stringify(response.data));

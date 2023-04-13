@@ -25,14 +25,14 @@ export default function Profile() {
   }
 
   const [profilSwitch, setProfilSwitch] = React.useState(true);
-  const [username, setUsername] = useState("");
+  const [firstname, setFirstname] = useState("");
   const [id, setId] = useState(currentUser.user.id);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
   const onChangeName = (e) => {
     const name = e.target.value;
-    setUsername(name);
+    setFirstname(name);
   };
 
   const handleEdit = (e) => {
@@ -45,7 +45,7 @@ export default function Profile() {
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      UserService.edit(id, username).then(
+      UserService.edit(id, firstname).then(
         (response) => {
           console.log(response);
         },
@@ -72,7 +72,7 @@ export default function Profile() {
           <a className="profil normal-case text-xl">
             <IoPersonCircleSharp />
             <div>
-              <p>{currentUser.user.userName}</p>
+              <p>{currentUser.user.firstname}</p>
             </div>
           </a>
           <a className="settings normal-case text-xl">
@@ -116,7 +116,7 @@ export default function Profile() {
                     <span className="label-text">Prénom</span>
                   </label>
                   <label className="lastname">
-                    <span className="label-text">{currentUser.user.userName}</span>
+                    <span className="label-text">{currentUser.user.firstname}</span>
                   </label>
                   <label className="email">
                     <span className="label-text">{currentUser.user.email}</span>
@@ -126,7 +126,7 @@ export default function Profile() {
                 <>
                 <Form onSubmit={handleEdit} ref={form}>
                   {/* <input type="text" placeholder="Prénom" className="input input-bordered input-xs w-full max-w-xs mt-2" /> */}
-                  <input type="text" placeholder={currentUser.user.userName}  onChange={onChangeName} className="input input-bordered input-xs w-full max-w-xs mt-2" />
+                  <input type="text" placeholder={currentUser.user.firstname}  onChange={onChangeName} className="input input-bordered input-xs w-full max-w-xs mt-2" />
                   <label className="email">
                     <span className="label-text">{currentUser.user.email}</span>
                   </label>

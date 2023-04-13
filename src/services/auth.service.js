@@ -2,15 +2,16 @@ import axios from "axios";
 
 const API_URL_AUTH = "http://back.papotcar.ismadev.fr/api/auth/";
 
-const register = async (userName, email, password, password2, age) => {
+const register = async (firstname, lastname, email, password, password2) => {
   try {
     const response = await axios.post(API_URL_AUTH + "register", {
-      userName,
+      firstname,
+      lastname,
       email,
       password,
       password2,
-      age,
     });
+    console.log(response.data)
     return response.data;
   } catch (error) {
     throw new Error(error.response.data.error);
