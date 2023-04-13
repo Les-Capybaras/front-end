@@ -5,6 +5,13 @@ import { MdAirlineSeatReclineNormal } from "react-icons/md";
 const RoadCard = (props) => {
     const trip = props.trip;
     const startDate = new Date(trip.startDate);
+    const parts = trip.estimatedDuration.split(":");
+    const hours = parseInt(parts[0], 10);
+    const minutes = parseInt(parts[1], 10);
+    const estimatedDuration = new Date(trip.startDate);
+    estimatedDuration.setHours(hours + 1);
+    estimatedDuration.setMinutes(minutes);
+    const arrivalTime = new Date(startDate.getTime() + estimatedDuration.getTime());
     const segments = trip.segments;
     const departure = segments[0].start;
     const arrival = segments[segments.length - 1].end;
@@ -22,10 +29,10 @@ const RoadCard = (props) => {
                 <li data-content="" className="step step-primary">
 
                 <div>
-                <span>{`${startDate.getHours()}:${startDate.getMinutes()}`}</span>
 
                 <div className="road-left-details">
-                    <p>{trip.estimatedTime}</p>
+                <span>{`${startDate.getHours()}:${startDate.getMinutes()}`}</span>
+                    <p>{trip.estimatedDuration}</p>
                 </div>
                     
                     <p>{departure.name}</p>
@@ -34,7 +41,7 @@ const RoadCard = (props) => {
                 </li>
                 <li data-content="" className="step step-primary">
                 <div>
-                    <span>{trip.arrivalTime}</span>
+                    <span>{`${arrivalTime.getHours()}:${arrivalTime.getMinutes()}`}</span>
                     <p>{arrival.name}</p>
                 </div>
                 </li>
@@ -53,7 +60,7 @@ const RoadCard = (props) => {
             <div className="driver">
                 <div>
                 <p>{driver.firstname}</p>
-                <span>{driver.age} ans</span>
+                <span>{driver.age}</span>
                 </div>
                 <IoPersonCircleSharp />
             </div>
