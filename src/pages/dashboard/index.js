@@ -34,9 +34,9 @@ export default function Dashboard() {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
       body: JSON.stringify({
-        start: searchStart,
-        end: searchEnd,
-        date: startDate,
+        startLocation: searchStart,
+        endLocation: searchEnd,
+        startDate: startDate,
       }),
     }).then((response) => {
       return response.json();
@@ -69,7 +69,7 @@ export default function Dashboard() {
     <div className="">
       <div className="blue-container">
         <div className="destination">
-          <form className="search">
+          <form className="search" onSubmit={handleSearch}>
             <h1 className="title">Où voulez-vous allez ?</h1>
             <div className="search-destination">
               <input
@@ -90,7 +90,7 @@ export default function Dashboard() {
 
               <Datepicker startDate={startDate} setStartDate={setStartDate} />
 
-              <button type="submit" onSubmit={handleSearch} className="search-btn btn">Rechercher</button>
+              <button type="submit" className="search-btn btn">Rechercher</button>
             </div>
           </form>
         </div>
