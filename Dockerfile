@@ -12,4 +12,4 @@ EXPOSE 3000
 
 RUN npm build
 
-CMD [ "npx", "serve", "-s", "build", "-l", "3000" ]
+CMD [ "npm", "start" ]
