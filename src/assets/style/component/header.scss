@@ -94,11 +94,10 @@
   border-radius: 51px;
   min-height: 40px;
   max-height: 40px;
-  width: 220px;
   display: flex;
   flex-direction: row;
   & :hover {
-    background-color: none !important;
+    background-color: #f4eeff !important;
   }
 }
 .btn-new-trajectory svg{

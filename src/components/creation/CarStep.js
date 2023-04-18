@@ -61,6 +61,7 @@ export const CarStep = (props) => {
             </h1>
           </div>
         </div>
+
         <div class="card w-2/5 creation-form-card bg-base-100">
           <div class="flex flex-col">
             <label className="input-label-creation">Adresse de départ</label>
@@ -84,7 +85,7 @@ export const CarStep = (props) => {
           </div>
           <div class="flex flex-col">
             <label className="input-label-creation">
-              Saisissez date et heure d'arrivée
+              Saisissez date et heure de départ
             </label>
 
             <DatePicker
@@ -135,7 +136,7 @@ export const CarStep = (props) => {
           </div>
           <div class="flex justify-between">
             <Link to="/dashboard" className="btn btn-outline creation-back-btn">
-              Quitter
+              Annuler
             </Link>
 
             <button className="btn creation-next-btn" onClick={handleClick}>
