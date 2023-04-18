@@ -12,6 +12,10 @@ export const CarStep = (props) => {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
 
+  const onChangePrice = (e) => {
+    const price = e.target.value;
+    setPrice(price);
+  };
   const onChangeFrom = (e) => {
     const from = e.target.value;
     setFrom(from);
@@ -87,7 +91,7 @@ export const CarStep = (props) => {
               showIcon
               selected={startDate}
               onChange={(date) => setStartDate(date)}
-              locale="fr"
+              locale="fr-FR"
               timeInputLabel="Time:"
               dateFormat="dd/MM/yyyy h:mm aa"
               datepickerAutohide
@@ -104,14 +108,14 @@ export const CarStep = (props) => {
                 class="btn btn-circle btn-outline btn-sm"
                 onClick={() => addSeats(false)}
               >
-                <HiMinus/>
+                <HiMinus />
               </button>
               <span>{seats}</span>
               <button
                 class="btn btn-circle btn-outline btn-sm btn-primary"
                 onClick={() => addSeats(true)}
               >
-                <HiPlus/>
+                <HiPlus />
               </button>
             </div>
           </div>
@@ -121,6 +125,8 @@ export const CarStep = (props) => {
 
             {/* <span>Price</span> */}
             <input
+              value={price}
+              onChange={onChangePrice}
               type="text"
               placeholder="€"
               className="input input-bordered"
@@ -128,7 +134,9 @@ export const CarStep = (props) => {
             {/* <span>EUR</span> */}
           </div>
           <div class="flex justify-between">
-            <Link to="/dashboard" className="btn btn-outline creation-back-btn">Quitter</Link>
+            <Link to="/dashboard" className="btn btn-outline creation-back-btn">
+              Quitter
+            </Link>
 
             <button className="btn creation-next-btn" onClick={handleClick}>
               Suivant

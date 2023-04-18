@@ -5,11 +5,10 @@ import UserService from "../../services/user.service";
 import { useNavigate } from "react-router-dom";
 import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";
-
+import { IoSettingsSharp } from "react-icons/io5";
+import { BiLogOutCircle } from "react-icons/bi";
 import { IoChevronDownOutline } from "react-icons/io5";
 import { IoPersonCircleSharp } from "react-icons/io5";
-import { FiLogOut } from "react-icons/fi";
-import { FiSettings } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 
 export default function Profile() {
@@ -26,14 +25,14 @@ export default function Profile() {
   };
 
   const [profilSwitch, setProfilSwitch] = React.useState(true);
-  const [username, setUsername] = useState("");
+  const [firstname, setFirstname] = useState("");
   const [id, setId] = useState(currentUser.user.id);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
   const onChangeName = (e) => {
     const name = e.target.value;
-    setUsername(name);
+    setFirstname(name);
   };
 
   const handleEdit = (e) => {
@@ -46,7 +45,7 @@ export default function Profile() {
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      UserService.edit(id, username).then(
+      UserService.edit(id, firstname).then(
         (response) => {
           console.log(response);
         },
@@ -69,35 +68,20 @@ export default function Profile() {
 
   return (
     <>
-      <div
-        tabIndex="0"
-        className="header-profil dropdown dropdown-bottom dropdown-end"
-      >
-        <a className="profil normal-case text-xl">
-          <IoPersonCircleSharp />
-          <div>
-            <p>{currentUser.user.userName}</p>
-          </div>
-        </a>
-        <a className="settings normal-case text-xl">
-          <IoChevronDownOutline />
-        </a>
-
-        <ul
-          tabIndex="0"
-          className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4"
-        >
-          <li>
-            <label htmlFor="setting-modal" className="header-dropdown-list">
-              <FiSettings /> Paramètres{" "}
-            </label>
-          </li>
-          <li>
-            <label htmlFor="dc-modal" className="header-dropdown-list-logout">
-              <FiLogOut />
-              Deconnexion
-            </label>
-          </li>
+      <div tabIndex="0" className="header-profil dropdown dropdown-bottom dropdown-end">
+          <a className="profil normal-case text-xl">
+            <IoPersonCircleSharp />
+            <div>
+              <p>{currentUser.user.firstname}</p>
+            </div>
+          </a>
+          <a className="settings normal-case text-xl">
+            <IoChevronDownOutline />
+          </a>
+        
+        <ul tabIndex="0" className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4">
+          <li><label htmlFor="setting-modal"><IoSettingsSharp /> Paramètres </label></li> 
+          <li><label htmlFor="dc-modal"><BiLogOutCircle />Deconnexion</label></li>
         </ul>
       </div>
 
@@ -150,9 +134,7 @@ export default function Profile() {
                     <span className="label-text">Prénom</span>
                   </label>
                   <label className="lastname">
-                    <span className="label-text">
-                      {currentUser.user.userName}
-                    </span>
+                    <span className="label-text">{currentUser.user.firstname}</span>
                   </label>
                   <label className="email">
                     <span className="label-text">{currentUser.user.email}</span>
@@ -160,21 +142,14 @@ export default function Profile() {
                 </>
               ) : (
                 <>
-                  <Form onSubmit={handleEdit} ref={form}>
-                    {/* <input type="text" placeholder="Prénom" className="input input-bordered input-xs w-full max-w-xs mt-2" /> */}
-                    <input
-                      type="text"
-                      placeholder={currentUser.user.userName}
-                      onChange={onChangeName}
-                      className="input input-bordered input-xs w-full max-w-xs mt-2"
-                    />
-                    <label className="email">
-                      <span className="label-text">
-                        {currentUser.user.email}
-                      </span>
-                    </label>
-                    <CheckButton style={{ display: "none" }} ref={checkBtn} />
-                  </Form>
+                <Form onSubmit={handleEdit} ref={form}>
+                  {/* <input type="text" placeholder="Prénom" className="input input-bordered input-xs w-full max-w-xs mt-2" /> */}
+                  <input type="text" placeholder={currentUser.user.firstname}  onChange={onChangeName} className="input input-bordered input-xs w-full max-w-xs mt-2" />
+                  <label className="email">
+                    <span className="label-text">{currentUser.user.email}</span>
+                  </label>
+                  <CheckButton style={{ display: "none" }} ref={checkBtn} />
+                </Form>
                 </>
               )}
             </div>

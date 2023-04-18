@@ -3,6 +3,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
+import DatePicker from "react-datepicker";
 
 import AuthService from "../../services/auth.service";
 
@@ -16,21 +17,20 @@ const validEmail = (value) => {
   }
 };
 
-const vage = (value) => {
-  // if (value == (int)) {
-  //   return (
-  //     <div className="invalid-feedback d-block">
-  //       Please select a correct number
-  //     </div>
-  //   );
-  // }
-};
-
-const vusername = (value) => {
+const vfirstname = (value) => {
   if (value.length < 3 || value.length > 20) {
     return (
       <div className="invalid-feedback d-block">
-        The username must be between 3 and 20 characters.
+        The firstname must be between 3 and 20 characters.
+      </div>
+    );
+  }
+};
+const vlastname = (value) => {
+  if (value.length < 3 || value.length > 20) {
+    return (
+      <div className="invalid-feedback d-block">
+        The lastname must be between 3 and 20 characters.
       </div>
     );
   }
@@ -55,21 +55,26 @@ const vpasswordConfirmation = (value) => {
   }
 };
 
-export default function Register({ handleLoginSwitch }) {
+export default function Register(props) {
   const form = useRef();
   const checkBtn = useRef();
 
-  const [username, setUsername] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const [age, setAge] = useState(0);
+  // const [birthdate, setBirthdate] = useState();
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
 
-  const onChangeUsername = (e) => {
-    const username = e.target.value;
-    setUsername(username);
+  const onChangeFirstname = (e) => {
+    const firstname = e.target.value;
+    setFirstname(firstname);
+  };
+  const onChangeLastname = (e) => {
+    const lastname = e.target.value;
+    setLastname(lastname);
   };
 
   const onChangeEmail = (e) => {
@@ -87,10 +92,10 @@ export default function Register({ handleLoginSwitch }) {
     setPasswordConfirmation(passwordConfirmation);
   };
   
-  const onChangeAge = (e) => {
-    const age = e.target.value;
-    setAge(age);
-  };
+  // const onChangeBirthdate = (e) => {
+  //   const birthdate = e.target.value;
+  //   setBirthdate(birthdate);
+  // };
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -101,10 +106,10 @@ export default function Register({ handleLoginSwitch }) {
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.register(username, email, password, passwordConfirmation, age).then(
+      AuthService.register(firstname, lastname, email, password, passwordConfirmation).then(
         (response) => {
-          setMessage(response.data.message);
-          setSuccessful(true);
+          setMessage("Utilisateur créer avec succès!");
+          props.handleLoginSwitch();
         },
         (error) => {
           const resMessage =
@@ -133,33 +138,45 @@ export default function Register({ handleLoginSwitch }) {
           <div className="text-success"></div>
           
           <div className="doubleInputForm mt-5 mb-2">
-            <div className="form-control w-70">
+            <div className="form-control w-50">
               <input
                 type="text"
                 placeholder="Nom"
                 required
                 className="input input-bordered"
-                v-model="username"
-                  name="username"
-                  value={username}
-                  onChange={onChangeUsername}
-                  validations={[vusername]}
+                v-model="firstname"
+                name="firstname"
+                value={firstname}
+                onChange={onChangeFirstname}
+                validations={[vfirstname]}
               />
             </div>
-            <div className="form-control w-30">
+            <div className="form-control w-50">
               <input
                 type="text"
-                placeholder="Age"
+                placeholder="Nom"
                 required
                 className="input input-bordered"
-                v-model="age"
-                name="age"
-                  value={age}
-                  onChange={onChangeAge}
-                  validations={[vage]}
+                v-model="lastname"
+                name="lastname"
+                value={lastname}
+                onChange={onChangeLastname}
+                validations={[vlastname]}
               />
             </div>
           </div>
+          {/* <div className="form-control">
+            <input
+              type="text"
+              id="date-input"
+              className="input input-bordered my-2"
+              value={birthdate}
+              onChange={onChangeBirthdate}
+              pattern="\d{2}/\d{2}/\d{4}"
+              placeholder="dd/mm/yyyy"
+              required
+            />
+          </div> */}
 
           <div className="form-control">
             <input
@@ -210,7 +227,7 @@ export default function Register({ handleLoginSwitch }) {
             <p className="newAccount">Vous avez déjà un compte ?</p>
             <a
               className="linkCreate link-hover pl-2"
-              onClick={handleLoginSwitch}
+              onClick={props.handleLoginSwitch}
             >
               Se connecter
             </a>
