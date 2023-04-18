@@ -1,5 +1,59 @@
 
 .datepickerStep {
-    width: 20% !important;
-    border: 1px solid black !important;
+    width: 47% !important;
+    min-height: 48px !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: var(--rounded-btn, 0.5rem);
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.creation-container{
+    margin-top: -98px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    align-items: center;
+}
+
+.creation-title-card{
+    border: 1px solid rgba(23, 159, 159, 0.1);
+    box-shadow: 0px 3px 6px rgba(6, 39, 39, 0.2);
+    border-radius: 14px;
+    flex-direction: row-reverse;
+    display: flex;
+}
+
+.creation-title-card h1{
+    font-size: 21px;
+    font-weight: 794 !important;
+    color: #3B2E6A;
+}
+
+
+.blue-container-creation{
+    min-height: 200px;
+    background-color: #e8f7f7;
+}
+
+.creation-form-card{
+    border: 1px solid rgba(23, 159, 159, 0.1);
+    box-shadow: 0px 3px 6px rgb(6 39 39 / 20%);
+    border-radius: 14px;
+    padding: 30px;
+    row-gap: 16px;
+}
+
+.input-label-creation{
+    font-weight: 794 !important;
+    font-size: 16px;
+    padding-bottom: 7px;
+}
+.creation-next-btn{
+    background-color: #3B2F6B;
+    text-transform: none;
+    color: #fff;
+}
+
+.creation-back-btn{
+    text-transform: none;
 }
