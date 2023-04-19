@@ -4,7 +4,7 @@ import Layout from './layout/layout';
 import Auth from './pages/auth';
 import AppContext from "./context";
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Redirect } from 'react-router-dom';
 import Dashboard from './pages/dashboard/index';
 import Road from './pages/road/index'
 import Creation from './pages/creation/index'
@@ -13,6 +13,12 @@ import Demands from './pages/demands/index'
 import AuthService from './services/auth.service';
 import { useEffect, useState } from 'react';
 import EventBus from './common/EventBus';
+
+const Home = () => {
+  return (
+    <Redirect to="/auth" />
+  )
+}
 
 function App() {
   
@@ -57,6 +63,7 @@ function App() {
         ) : (
           <Routes>  
             <Route>
+              <Route path="/" element={<Home />} exact />
               <Route path="/auth" element={<Auth/>} exact />
             </Route>
           </Routes>
