@@ -81,6 +81,19 @@ h1.title {
   font-size: 14px;
   text-transform: capitalize;
 }
+
+.join-btn {
+  border-radius: 2rem;
+  margin: 0 0.2rem;
+  background-color: #3b2f6b;
+  color: white;
+  width: 6rem;
+  height: 2rem !important;
+  min-height: 2.5rem !important;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
 .react-datepicker__tab-loop {
   position: absolute;
 }

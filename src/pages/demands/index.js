@@ -10,7 +10,7 @@ export default function Demands() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
+        Authorization: "Bearer " + JSON.parse(localStorage.getItem("user")).token,
       },
     })
       .then((response) => {
@@ -45,26 +45,26 @@ export default function Demands() {
           </h1>
         </div>
       </div>
-      <div class="flex flex-col items-center -mt-16">
+      <div className="flex flex-col items-center -mt-16">
         <div className="card lg:w-2/5 w-full bg-base-100 shadow-xl">
-          <div class="card-body">
+          <div className="card-body">
             <h1 className="card-title">Demandes pour vos trajet</h1>
-            <table class="table w-full">
+            <table className="table w-full">
               <tbody>
                 {/* <!-- Dynamic --> */}
                 {demands.map((demand) => {
                   return (
-                    <tr className="passager-info">
+                    <tr className="passager-info" key={demand.id}>
                       <th className="passager-avatar">
                         <IoPersonCircleSharp />
                       </th>
-                      <td>{demand.user.firstName}</td>
-                      <td>{demand.startLocation} - {demand.endLocation}</td>
-                      <td class="justify-end flex gap-2">
-                        <button onClick={handleAccept} class="btn  btn-ghost btn-circle btn-outline btn-success">
+                      <td>{demand.userId}</td>
+                      <td>{demand.trip.price}</td>
+                      <td className="justify-end flex gap-2">
+                        <button onClick={handleAccept} className="btn  btn-ghost btn-circle btn-outline btn-success">
                           <BsCheckLg />
                         </button>
-                        <button onClick={handleReject} class="btn  btn-ghost btn-circle btn-outline btn-error">
+                        <button onClick={handleReject} className="btn  btn-ghost btn-circle btn-outline btn-error">
                           <RxCross2 />
                         </button>
                       </td>
@@ -79,11 +79,11 @@ export default function Demands() {
                   </th>
                   <td>Ismael Miguelez</td>
                   <td>Nantes - Paris</td>
-                  <td class="justify-end flex gap-2">
-                    <button class="btn  btn-ghost btn-circle btn-outline btn-success">
+                  <td className="justify-end flex gap-2">
+                    <button className="btn  btn-ghost btn-circle btn-outline btn-success">
                       <BsCheckLg />
                     </button>
-                    <button class="btn  btn-ghost btn-circle btn-outline btn-error">
+                    <button className="btn  btn-ghost btn-circle btn-outline btn-error">
                       <RxCross2 />
                     </button>
                   </td>
@@ -95,11 +95,11 @@ export default function Demands() {
                   </th>
                   <td>Benjamin Bordelet</td>
                   <td>Nantes - Paris</td>
-                  <td class="justify-end flex gap-2">
-                    <button class="btn  btn-ghost btn-circle btn-outline btn-success">
+                  <td className="justify-end flex gap-2">
+                    <button className="btn  btn-ghost btn-circle btn-outline btn-success">
                       <BsCheckLg />
                     </button>
-                    <button class="btn  btn-ghost btn-circle btn-outline btn-error">
+                    <button className="btn  btn-ghost btn-circle btn-outline btn-error">
                       <RxCross2 />
                     </button>
                   </td>
@@ -111,11 +111,11 @@ export default function Demands() {
                   </th>
                   <td>Antoine Marionneau</td>
                   <td>Nantes - Paris</td>
-                  <td class="justify-end flex gap-2">
-                    <button class="btn  btn-ghost btn-circle btn-outline btn-success">
+                  <td className="justify-end flex gap-2">
+                    <button className="btn  btn-ghost btn-circle btn-outline btn-success">
                       <BsCheckLg />
                     </button>
-                    <button class="btn  btn-ghost btn-circle btn-outline btn-error">
+                    <button className="btn  btn-ghost btn-circle btn-outline btn-error">
                       <RxCross2 />
                     </button>
                   </td>

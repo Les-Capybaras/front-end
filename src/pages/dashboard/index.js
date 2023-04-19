@@ -26,6 +26,7 @@ export default function Dashboard() {
   const [searchStart, setSearchStart] = useState("");
   const [searchEnd, setSearchEnd] = useState("");
   const [startDate, setStartDate] = useState(new Date());
+  const [isDemandCreated, setIsDemandCreated] = useState(false);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -34,7 +35,7 @@ export default function Dashboard() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
+        Authorization: "Bearer " + JSON.parse(localStorage.getItem("user")).token,
       },
       body: JSON.stringify({
         startLocation: searchStart,
@@ -50,12 +51,19 @@ export default function Dashboard() {
       });
   };
 
+  const demandCreated = () => {
+    setIsDemandCreated(true);
+    setTimeout(() => {
+      setIsDemandCreated(false);
+    }, 3000);
+  };
+
   useEffect(() => {
     fetch(`http://back.papotcar.ismadev.fr/api/trips/available`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
+        Authorization: "Bearer " + JSON.parse(localStorage.getItem("user")).token,
       },
     })
       .then((response) => {
@@ -94,7 +102,7 @@ export default function Dashboard() {
 
               {/* <input type="text" placeholder="Quand ?" className="input input-ghost max-w-xs" /> */}
               <BiCalendar />
-              <Datepicker startDate={startDate} setStartDate={setStartDate} />
+              <Datepicker startDate={startDate} setStartDate={setStartDate} demandCreated={demandCreated} />
 
               <button type="submit" className="search-btn btn">
                 Rechercher
@@ -112,6 +120,12 @@ export default function Dashboard() {
           ))}
         </div>
       </div>
+      {isDemandCreated && (
+        <div className="demand-created">
+          <p>Votre demande a bien été envoyée</p>
+        </div>
+      )
+      }
     </div>
   );
 }

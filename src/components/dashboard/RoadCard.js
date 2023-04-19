@@ -1,9 +1,11 @@
 import React from "react";
+import { useState } from "react";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { MdAirlineSeatReclineNormal } from "react-icons/md";
 
 const RoadCard = (props) => {
   const trip = props.trip;
+  const [demand, setDemand] = useState(null);
   const startDate = new Date(trip.startDate);
   const options = {
     weekday: "long",
@@ -27,6 +29,33 @@ const RoadCard = (props) => {
   const driver = trip.driver;
   // Const with all segments without the first and last one
   //const middleSegments = segments.slice(1, segments.length - 1);
+    const handleRequestCreation = () => {
+      console.log(trip);
+    const request = {
+      "segmentIds": [
+        segments[0].id,
+      ]
+    }
+    console.log(request);
+    fetch(`http://back.papotcar.ismadev.fr/api/request/${trip.id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + JSON.parse(localStorage.getItem("user")).token,
+      },
+      body: JSON.stringify(request),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        console.log(response);
+        if (response.ok) {
+          props.demandCreated();
+        }
+      });
+  };
+
 
   return (
     <div className="road-card">
@@ -71,6 +100,9 @@ const RoadCard = (props) => {
               <span>{driver.age}</span>
             </div>
             <IoPersonCircleSharp />
+          </div>
+          <div className="join-trip">
+            <button onClick={handleRequestCreation} className="btn join-btn">Rejoindre</button>
           </div>
         </div>
       </div>

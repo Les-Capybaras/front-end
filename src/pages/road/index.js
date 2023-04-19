@@ -11,7 +11,7 @@ export default function Dashboard() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
+        Authorization: "Bearer " + JSON.parse(localStorage.getItem("user")).token,
       },
     })
       .then((response) => {
