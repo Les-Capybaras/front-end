@@ -29,7 +29,7 @@ export default function Dashboard() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-
+    startDate.setHours(0.0)
     fetch(`http://back.papotcar.ismadev.fr/api/trips/search`, {
       method: "POST",
       headers: {
@@ -39,14 +39,13 @@ export default function Dashboard() {
       body: JSON.stringify({
         startLocation: searchStart,
         endLocation: searchEnd,
-        startDate: startDate.setHours(0, 0),
+        startDate: getFormatedDate(startDate),
       }),
     })
       .then((response) => {
         return response.json();
       })
       .then((response) => {
-        console.log(response);
         setTrips(response);
       });
   };
@@ -63,7 +62,6 @@ export default function Dashboard() {
         return response.json();
       })
       .then((response) => {
-        console.log(response);
         setTrips(response);
       });
   }, []);
@@ -116,4 +114,15 @@ export default function Dashboard() {
       </div>
     </div>
   );
+}
+
+const getFormatedDate = (date) => {
+  const year = date.getFullYear();
+  const month = ('0' + (date.getMonth() + 1)).slice(-2);
+  const day = ('0' + date.getDate()).slice(-2);
+  const hours = ('0' + date.getHours()).slice(-2);
+  const minutes = ('0' + date.getMinutes()).slice(-2);
+  const seconds = ('0' + date.getSeconds()).slice(-2);
+  const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  return formattedDate;
 }

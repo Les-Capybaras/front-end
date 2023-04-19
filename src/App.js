@@ -4,7 +4,7 @@ import Layout from './layout/layout';
 import Auth from './pages/auth';
 import AppContext from "./context";
 
-import { BrowserRouter as Router, Route, Routes, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Dashboard from './pages/dashboard/index';
 import Road from './pages/road/index'
 import Creation from './pages/creation/index'
@@ -16,7 +16,7 @@ import EventBus from './common/EventBus';
 
 const Home = () => {
   return (
-    <Redirect to="/auth" />
+    <Navigate to="/auth" replace />
   )
 }
 

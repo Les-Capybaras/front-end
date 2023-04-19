@@ -12,7 +12,6 @@ const RoadCard = (props) => {
     day: "numeric",
   };
   const formattedDate = startDate.toLocaleDateString("fr-FR", options);
-  console.log(formattedDate);
   const parts = trip.estimatedDuration.split(":");
   const hours = parseInt(parts[0], 10);
   const minutes = parseInt(parts[1], 10);

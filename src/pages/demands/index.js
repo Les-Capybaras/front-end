@@ -1,8 +1,40 @@
+import { useState, useEffect } from "react";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { BsCheckLg } from "react-icons/bs";
 import { RxCross2 } from "react-icons/rx";
 
 export default function Demands() {
+  const [demands, setDemands] = useState([]);
+  useEffect(() => {
+    fetch(`http://back.papotcar.ismadev.fr/api/request`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        console.log(response);
+        setDemands(response);
+      });
+  }, []);
+
+  const handleAccept = (e) => {
+    e.preventDefault();
+    console.log(e.target.id);
+    //TODO: Implement Accept
+  };
+
+  const handleReject = (e) => {
+    e.preventDefault();
+    console.log(e.target.id);
+    //TODO: Implement Reject
+  };
+
+
   return (
     <div className="">
       <div className="blue-container">
@@ -19,7 +51,28 @@ export default function Demands() {
             <h1 className="card-title">Demandes pour vos trajet</h1>
             <table class="table w-full">
               <tbody>
-                {/* <!-- row 1 --> */}
+                {/* <!-- Dynamic --> */}
+                {demands.map((demand) => {
+                  return (
+                    <tr className="passager-info">
+                      <th className="passager-avatar">
+                        <IoPersonCircleSharp />
+                      </th>
+                      <td>{demand.user.firstName}</td>
+                      <td>{demand.startLocation} - {demand.endLocation}</td>
+                      <td class="justify-end flex gap-2">
+                        <button onClick={handleAccept} class="btn  btn-ghost btn-circle btn-outline btn-success">
+                          <BsCheckLg />
+                        </button>
+                        <button onClick={handleReject} class="btn  btn-ghost btn-circle btn-outline btn-error">
+                          <RxCross2 />
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                }
+                )}
+                {/* row 1 */}
                 <tr className="passager-info">
                   <th className="passager-avatar">
                     <IoPersonCircleSharp />
