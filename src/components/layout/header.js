@@ -23,26 +23,31 @@ export default function Header() {
       </div>
       <div className="header-link">
         <ul className="menu menu-horizontal px-1">
-          <li className={splitLocation === "" ? "active" : ""}>
+          <li className={splitLocation === "dashboard" ? "active" : ""}>
             <Link to="/dashboard">Accueil</Link>
           </li>
           <li className={splitLocation === "road" ? "active" : ""}>
             <Link to="/road">Mes Trajets</Link>
           </li>
+          <li className={splitLocation === "demands" ? "active" : ""}>
+            <Link to="/demands">Mes Demandes</Link>
+          </li>
         </ul>
       </div>
-      <div>
+      <div className="header-options">
           <Link className="btn btn-ghost btn-new-trajectory" to="/creation">
             <HiPlus />
             Nouveau trajet
           </Link>
+          <a className="responsive-header btn btn-ghost normal-case text-xl">
+            <IoMenu onClick={handleResponsive} />
+          </a>
+          <Profile />
       </div>
       
-      <Profile />
+      
 
-      <a className="responsive-header btn btn-ghost normal-case text-xl">
-        <IoMenu onClick={handleResponsive} />
-      </a>
+      
     </div>
   );
 }

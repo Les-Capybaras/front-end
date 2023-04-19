@@ -14,6 +14,7 @@
     row-gap: 30px;
     align-items: center;
     margin-bottom: 20px;
+    padding: 0 24px;
 }
 
 .creation-title-card{
@@ -58,4 +59,13 @@
 
 .creation-back-btn{
     text-transform: none;
+}
+
+@media (max-width: 768px) {
+    .creation-title-card{
+        flex-direction: column;
+        img {
+            width: 180px;
+        }
+    }
 }

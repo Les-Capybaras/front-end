@@ -6,9 +6,9 @@ import AppContext from "./context";
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Dashboard from './pages/dashboard/index';
-import History from './pages/history/index'
 import Road from './pages/road/index'
 import Creation from './pages/creation/index'
+import Demands from './pages/demands/index'
 
 import AuthService from './services/auth.service';
 import { useEffect, useState } from 'react';
@@ -48,7 +48,7 @@ function App() {
             <Routes>  
               <Route>
                 <Route path="/dashboard" element={<Dashboard />} exact />
-                <Route path="/history" element={<History />} />
+                <Route path="/demands" element={<Demands />} /> 
                 <Route path="/road" element={<Road />} />
                 <Route path="/creation" element={<Creation />} />
               </Route>

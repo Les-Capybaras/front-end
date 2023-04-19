@@ -61,7 +61,7 @@ export default function Login({ handleLoginSwitch }) {
   return (
     <div className="container mx-auto loginScreen h-screen flex flex-col justify-center">
 
-      <Form onSubmit={handleLogin} ref={form} className="loginContainer card w-96 bg-base-100 shadow-xl card-bordered">
+      <Form onSubmit={handleLogin} ref={form} className="loginContainer card lg:w-96 w-full bg-base-100 shadow-xl card-bordered">
         <div className="card-body">
           <div className="flex flex-row justify-center">
             <img src="../logoPPC.png" className="logoImgAuth" />
@@ -72,7 +72,7 @@ export default function Login({ handleLoginSwitch }) {
               type="email"
               placeholder="adresse email"
               required
-              className="input input-bordered w-96"
+              className="input input-bordered"
               v-model="email"
               value={email}
               onChange={onChangeEmail}
@@ -85,7 +85,7 @@ export default function Login({ handleLoginSwitch }) {
               type="password"
               placeholder="Mot de passe"
               required
-              className="input input-bordered w-96"
+              className="input input-bordered"
               v-model="password"
               value={password}
               onChange={onChangePassword}

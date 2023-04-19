@@ -50,7 +50,7 @@ export const CarStep = (props) => {
     <div className="">
       <div className="blue-container-creation"></div>
       <div className="creation-container">
-        <div class="card card-side creation-title-card w-2/5 bg-base-100">
+        <div class="card card-side creation-title-card lg:w-2/5 w-full bg-base-100">
           <figure>
             <img src="../cab-driver.png" className="" />
           </figure>
@@ -62,7 +62,7 @@ export const CarStep = (props) => {
           </div>
         </div>
 
-        <div class="card w-2/5 creation-form-card bg-base-100">
+        <div class="card lg:w-2/5 w-full creation-form-card bg-base-100">
           <div class="flex flex-col">
             <label className="input-label-creation">Adresse de départ</label>
             <input

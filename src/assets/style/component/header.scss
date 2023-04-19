@@ -1,7 +1,8 @@
 .navbar {
   border-bottom: 1px solid #e8f5f5;
-  padding-right: 5rem;
-  padding-left: 5rem;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
 }
 .header-logo {
   display: flex;
@@ -96,7 +97,7 @@
   max-height: 40px;
   display: flex;
   flex-direction: row;
-  & :hover {
+  &:hover {
     background-color: #f4eeff !important;
   }
 }
@@ -109,7 +110,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .header-logo {
     width: auto;
   }
@@ -119,7 +120,5 @@
   }
   .responsive-header {
     display: flex;
-    margin-left: auto;
-    margin-right: 2rem;
   }
 }

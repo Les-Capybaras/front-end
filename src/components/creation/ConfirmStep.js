@@ -14,7 +14,7 @@ export const ConfirmStep = (props) => {
     <div className="">
       <div className="blue-container-recap"></div>
       <div className="recap-container">
-      <div class="card card-side creation-title-card w-2/5 bg-base-100">
+      <div class="card card-side creation-title-card lg:w-2/5 w-full bg-base-100">
           <figure>
             <img src="../sammy-line-saas.png" className="" />
           </figure>
@@ -25,7 +25,7 @@ export const ConfirmStep = (props) => {
             </h1>
           </div>
         </div>
-        <div class="card w-2/5 creation-form-card bg-base-100">
+        <div class="card lg:w-2/5 w-full creation-form-card bg-base-100">
           <div class="flex flex-col recap-form-body">
             <h3 className="input-label-creation">Adresse de départ</h3>
             <p>nantes{recap.from}</p>

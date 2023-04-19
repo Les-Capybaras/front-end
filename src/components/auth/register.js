@@ -128,7 +128,7 @@ export default function Register(props) {
 
   return (
     <div className="container mx-auto loginScreen h-screen flex flex-col justify-center">
-      <Form onSubmit={handleRegister} ref={form} className="loginContainer register card w-96 bg-base-100 shadow-xl card-bordered">
+      <Form onSubmit={handleRegister} ref={form} className="loginContainer register card lg:w-96 w-full bg-base-100 shadow-xl card-bordered">
         <div className="card-body">
         {!successful && (
           <div>
@@ -141,7 +141,7 @@ export default function Register(props) {
             <div className="form-control w-50">
               <input
                 type="text"
-                placeholder="Nom"
+                placeholder="Prénom"
                 required
                 className="input input-bordered"
                 v-model="firstname"

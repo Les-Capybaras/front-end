@@ -74,7 +74,7 @@ export default function Creation() {
       return (
         <div className="container-loader flex items-center justify-center">
           <div className="flex flex-col items-center">
-            <div class="card w-2/5 h-3/5 bg-base-100 shadow-xl">
+            <div class="card lg:w-2/5 w-full h-3/5 bg-base-100 shadow-xl">
               <div class="card-body items-center text-center loading-card">
                 <div class="loader">
                   <svg
@@ -146,7 +146,7 @@ export default function Creation() {
       return (
         <div className="container-loader flex items-center justify-center">
           <div className="flex flex-col items-center">
-            <div class="card w-2/5 h-3/5 bg-base-100 shadow-xl">
+            <div class="card lg:w-2/5 w-full bg-base-100 shadow-xl">
               <div class="card-body items-center text-center loading-card">
               <img src="../pablita-car-rental-1.png"/>
                 <h1>
