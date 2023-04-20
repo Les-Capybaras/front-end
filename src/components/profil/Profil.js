@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import AppContext from "../../context";
 import AuthService from "../../services/auth.service";
 import UserService from "../../services/user.service";
@@ -23,6 +23,7 @@ export default function Profile() {
     navigate("/auth");
     window.location.reload();
   };
+  
 
   const [profilSwitch, setProfilSwitch] = React.useState(true);
   const [firstname, setFirstname] = useState("");
@@ -130,7 +131,7 @@ export default function Profile() {
                     <span className="label-text">Prénom</span>
                   </label> */}
                   <label className="lastname">
-                    <span className="label-text">{currentUser.user.firstname}</span>
+                    {/* <span className="label-text">{currentInfo.value.firstname}</span> */}
                   </label>
                   <label className="email">
                     <span className="label-text">{currentUser.user.email}</span>

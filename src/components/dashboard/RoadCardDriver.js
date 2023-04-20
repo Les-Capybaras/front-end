@@ -38,7 +38,7 @@ const RoadCardDriver = (props) => {
               <li data-content="" className="step step-primary">
                 <div>
                   <div className="road-left-details">
-                    <span>{`${startDate.getHours()}:${startDate.getMinutes()}`}</span>
+                    <span>{`${startDate.getHours()}:${startDate.getMinutes() < 10 ? '0'+startDate.getMinutes() : startDate.getMinutes()}`}</span>
                     <p>{trip.estimatedDuration}</p>
                   </div>
 
@@ -47,7 +47,7 @@ const RoadCardDriver = (props) => {
               </li>
               <li data-content="" className="step step-primary">
                 <div>
-                  <span>{`${arrivalTime.getHours() + 1}:${arrivalTime.getMinutes()}`}</span>
+                  <span>{`${arrivalTime.getHours() + 1}:${arrivalTime.getMinutes() < 10 ? '0'+arrivalTime.getMinutes() : arrivalTime.getMinutes()}`}</span>
                   <p>{arrival.name}</p>
                 </div>
               </li>

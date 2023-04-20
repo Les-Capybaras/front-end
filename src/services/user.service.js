@@ -16,8 +16,23 @@ const edit = async (id, firstname) => {
   }
 };
 
+const showMe = async () => {
+  try {
+    const response = await axios.get(API_URL_AUTH + "me", {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + JSON.parse(localStorage.getItem("user")).token,
+    }
+    });
+    return response.data
+  } catch (error) {
+    throw new Error(error.response.data.error);
+  }
+}
+
 const UserService = {
-  edit
+  edit,
+  showMe
 }
 
 export default UserService;
