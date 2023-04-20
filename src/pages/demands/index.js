@@ -107,7 +107,7 @@ export default function Demands() {
             <table className="table w-full">
               <tbody>
                 {/* <!-- Dynamic --> */}
-                {demands.map((demand) => {
+                {demands && demands.map((demand) => {
                   return (
                     <tr className="passager-info" key={demand.id}>
                       <th className="passager-avatar">
