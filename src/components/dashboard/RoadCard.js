@@ -90,11 +90,12 @@ const RoadCard = (props) => {
               <MdAirlineSeatReclineNormal />
               <p>{props.trip.seats} places disponibles</p>
             </div>
-          </div>
-        </div>
-        <div className="date mb-3">
+            <div className="date mb-3">
           <label>{formattedDate}</label>
           </div>
+          </div>
+        </div>
+        
         <div className="driver-info">
           <div className="driver">
             <div>
