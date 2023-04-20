@@ -121,18 +121,14 @@ export default function Profile() {
             ✕
           </label>
           <h3 className="text-lg font-bold">Mon profil</h3>
-          <div className="py-4 flex">
-            <div className="avatar">
-              <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-              </div>
-            </div>
+          <div className="py-4 flex passager-avatar">
+          <IoPersonCircleSharp />
             <div className="form-control ml-3 text-2xl font-bold">
               {profilSwitch ? (
                 <>
-                  <label className="firstname">
+                  {/* <label className="firstname">
                     <span className="label-text">Prénom</span>
-                  </label>
+                  </label> */}
                   <label className="lastname">
                     <span className="label-text">{currentUser.user.firstname}</span>
                   </label>

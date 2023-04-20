@@ -92,10 +92,13 @@ const RoadCard = (props) => {
             </div>
           </div>
         </div>
+        <div className="date mb-3">
+          <label>{formattedDate}</label>
+          </div>
         <div className="driver-info">
           <div className="driver">
             <div>
-              <label>{formattedDate}</label>
+              
               <p>
                 {driver.firstname} {driver.lastname}
               </p>

@@ -101,7 +101,7 @@ h1.title {
   flex-direction: row;
   justify-content: space-between;
   display: flex;
-  border-bottom: 2px solid #e8f5f5;
+  
 }
 .road-driver {
   flex-direction: row;
@@ -219,6 +219,13 @@ h1.title {
   font-size: 22px;
 }
 
+.date label{
+  font-weight: 794 !important;
+  font-size: 16px;
+  font-family: SF Compact Rounded;
+  text-transform: capitalize;
+}
+
 .road-card:hover {
   box-shadow: 0px 12px 22px rgba(0, 0, 0, 0.16);
   transition: 0.5s;
@@ -329,6 +336,7 @@ li.step div span {
   flex-direction: column;
   justify-content: space-between;
   flex-direction: row;
+  border-top: 2px solid #e8f5f5;
 }
 .driver {
   display: flex;
