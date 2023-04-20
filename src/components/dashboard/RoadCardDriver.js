@@ -38,7 +38,7 @@ const RoadCardDriver = (props) => {
               <li data-content="" className="step step-primary">
                 <div>
                   <div className="road-left-details">
-                    <span>{`${startDate.getHours()}:${startDate.getMinutes()}`}</span>
+                    <span>{`${startDate.getHours() - 1}:${startDate.getMinutes()}`}</span>
                     <p>{trip.estimatedDuration}</p>
                   </div>
 

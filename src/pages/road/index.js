@@ -42,13 +42,6 @@ export default function Dashboard() {
         <div className="road-list">
           <div className="container-title-dashboardList">
             <h1 className="title">Trajets en cours</h1>
-            {/* {trips.map((trip) => (
-              trip.driver.email == currentUser.user.email &&
-              new Date(trip.startDate) < now &&
-                  // console.log(new Date(trip.startDate))
-                  // console.log(now)
-                  <RoadCard trip={trip} key={trip.id} />
-            ))} */}
             {trips.map((trip) => (
                 trip.driver.email == currentUser.user.email &&
                 new Date(trip.startDate).toDateString() === now.toDateString()
