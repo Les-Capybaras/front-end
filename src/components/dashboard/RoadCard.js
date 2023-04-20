@@ -47,6 +47,9 @@ const RoadCard = (props) => {
         return response.json();
       })
       .then((response) => {
+        if (response.message) {
+          props.getDemandError(response.message);
+        }
         if (response.status === "pending") {
           console.log('passed');
           props.demandCreated();

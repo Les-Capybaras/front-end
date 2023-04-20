@@ -5,6 +5,8 @@ import { RxCross2 } from "react-icons/rx";
 
 export default function Demands() {
   const [demands, setDemands] = useState([]);
+  const [usernames, setUsernames] = useState(null);
+
   useEffect(() => {
     fetch(`http://back.papotcar.ismadev.fr/api/request`, {
       method: "GET",
@@ -19,6 +21,7 @@ export default function Demands() {
       .then((response) => {
         setDemands(response);
       });
+      getUsernames();
   }, []);
 
   const handleAccept = (id) => {
@@ -61,6 +64,31 @@ export default function Demands() {
       );
   };
 
+  const getUsernames = async () => {
+    try {
+          const response = await fetch(`http://back.papotcar.ismadev.fr/api/users`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + JSON.parse(localStorage.getItem("user")).token,
+      },
+    });
+    const data = await response.json();
+    setUsernames(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getUsername = (id) => {
+    if (usernames) {
+      const user = usernames.find((user) => user.id === id);
+      return `${user.firstname} ${user.lastname}`;
+    }
+    else {
+      return 'Utilisateur Inconnu';
+    }
+  };
 
   return (
     <div className="">
@@ -85,7 +113,7 @@ export default function Demands() {
                       <th className="passager-avatar">
                         <IoPersonCircleSharp />
                       </th>
-                      <td>{demand.userId}</td>
+                      <td>{getUsername(demand.userId)}</td>
                       <td>{demand.trip.price}</td>
                       <td className="justify-end flex gap-2">
                         <button onClick={() => handleAccept(demand.id)} className="btn  btn-ghost btn-circle btn-outline btn-success">
@@ -99,7 +127,7 @@ export default function Demands() {
                   );
                 }
                 )}
-                {/* row 1 */}
+                {/* 
                 <tr className="passager-info">
                   <th className="passager-avatar">
                     <IoPersonCircleSharp />
@@ -115,7 +143,6 @@ export default function Demands() {
                     </button>
                   </td>
                 </tr>
-                {/* row 2 */}
                 <tr className="passager-info">
                   <th className="passager-avatar">
                     <IoPersonCircleSharp />
@@ -131,7 +158,6 @@ export default function Demands() {
                     </button>
                   </td>
                 </tr>
-                {/* <!-- row 3 --> */}
                 <tr className="passager-info">
                   <th className="passager-avatar">
                     <IoPersonCircleSharp />
@@ -146,7 +172,15 @@ export default function Demands() {
                       <RxCross2 />
                     </button>
                   </td>
-                </tr>
+                </tr> */}
+
+                {demands.length === 0 && (
+                  <tr>
+                    <td className="text-center title" colSpan="4">
+                      Aucune demande pour le moment
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>
