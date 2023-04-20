@@ -27,10 +27,14 @@ export default function Dashboard() {
   const [searchEnd, setSearchEnd] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [isDemandCreated, setIsDemandCreated] = useState(false);
+  const [demandError, setDemandError] = useState(null);
 
   const handleSearch = (e) => {
     e.preventDefault();
     startDate.setHours(0.0)
+    if (searchStart === "" || searchEnd === "" || startDate === "") {
+      return;
+    }
     fetch(`http://back.papotcar.ismadev.fr/api/trips/search`, {
       method: "POST",
       headers: {
@@ -49,6 +53,7 @@ export default function Dashboard() {
       .then((response) => {
         setTrips(response);
       });
+
   };
 
   const demandCreated = () => {
@@ -56,6 +61,14 @@ export default function Dashboard() {
     setIsDemandCreated(true);
     setTimeout(() => {
       setIsDemandCreated(false);
+    }, 3000);
+  };
+
+  const getDemandError = (response) => {
+    console.log('demandError');
+    setDemandError(response);
+    setTimeout(() => {
+      setDemandError(null);
     }, 3000);
   };
 
@@ -116,8 +129,8 @@ export default function Dashboard() {
       <div className="road-list">
         <div className="container-title-dashboardList">
           <p>Trajets qui pourrait vous intéresser</p>
-          {trips.map((trip) => (
-            <RoadCard trip={trip} demandCreated={demandCreated} key={trip.id} />
+          {trips && trips.map((trip) => (
+            <RoadCard trip={trip} demandCreated={demandCreated} getDemandError={getDemandError} key={trip.id} />
           ))}
         </div>
       </div>
@@ -127,6 +140,13 @@ export default function Dashboard() {
         </div>
       )
       }
+
+        { demandError && (
+          <div className="demand-created demand-created--error">
+            <p className="title">{demandError}</p>
+          </div>
+        )
+        }
     </div>
   );
 }

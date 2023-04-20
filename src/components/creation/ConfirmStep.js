@@ -28,11 +28,11 @@ export const ConfirmStep = (props) => {
         <div class="card lg:w-2/5 w-full creation-form-card bg-base-100">
           <div class="flex flex-col recap-form-body">
             <h3 className="input-label-creation">Adresse de départ</h3>
-            <p>nantes{recap.from}</p>
+            <p>{recap.from}</p>
           </div>
           <div class="flex flex-col recap-form-body">
             <h3 className="input-label-creation">Adresse de départ</h3>
-            <p>paris{recap.to}</p>
+            <p>{recap.to}</p>
           </div>
           <div class="flex flex-col recap-form-body">
             <h3 className="input-label-creation">Date et heure du départ</h3>
