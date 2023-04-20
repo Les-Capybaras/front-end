@@ -17,21 +17,48 @@ export default function Demands() {
         return response.json();
       })
       .then((response) => {
-        console.log(response);
         setDemands(response);
       });
   }, []);
 
-  const handleAccept = (e) => {
-    e.preventDefault();
-    console.log(e.target.id);
-    //TODO: Implement Accept
+  const handleAccept = (id) => {
+    console.log(id);
+    fetch(`http://back.papotcar.ismadev.fr/api/request/${id}/accept`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + JSON.parse(localStorage.getItem("user")).token,
+      },
+    })
+      .then((response) => {
+        return response.json();
+      }
+      )
+      .then((response) => {
+        const filteredDemands = demands.filter((demand) => demand.id !== id);
+        setDemands(filteredDemands);
+      }
+      );
   };
 
-  const handleReject = (e) => {
-    e.preventDefault();
-    console.log(e.target.id);
-    //TODO: Implement Reject
+  const handleReject = (id) => {
+    console.log(id);
+    fetch(`http://back.papotcar.ismadev.fr/api/request/${id}/reject`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + JSON.parse(localStorage.getItem("user")).token,
+      },
+    })
+      .then((response) => {
+        return response.json();
+      }
+      )
+      .then((response) => {
+        const filteredDemands = demands.filter((demand) => demand.id !== id);
+        setDemands(filteredDemands);
+      }
+      );
   };
 
 
@@ -61,10 +88,10 @@ export default function Demands() {
                       <td>{demand.userId}</td>
                       <td>{demand.trip.price}</td>
                       <td className="justify-end flex gap-2">
-                        <button onClick={handleAccept} className="btn  btn-ghost btn-circle btn-outline btn-success">
+                        <button onClick={() => handleAccept(demand.id)} className="btn  btn-ghost btn-circle btn-outline btn-success">
                           <BsCheckLg />
                         </button>
-                        <button onClick={handleReject} className="btn  btn-ghost btn-circle btn-outline btn-error">
+                        <button onClick={() => handleReject(demand.id)} className="btn  btn-ghost btn-circle btn-outline btn-error">
                           <RxCross2 />
                         </button>
                       </td>
