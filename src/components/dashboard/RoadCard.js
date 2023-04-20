@@ -92,6 +92,7 @@ const RoadCard = (props) => {
         <div className="driver-info">
           <div className="driver">
             <div>
+              <label>{formattedDate}</label>
               <p>
                 {driver.firstname} {driver.lastname}
               </p>
