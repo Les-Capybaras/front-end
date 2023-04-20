@@ -30,13 +30,11 @@ const RoadCard = (props) => {
   // Const with all segments without the first and last one
   //const middleSegments = segments.slice(1, segments.length - 1);
     const handleRequestCreation = () => {
-      console.log(trip);
     const request = {
       "segmentIds": [
         segments[0].id,
       ]
     }
-    console.log(request);
     fetch(`http://back.papotcar.ismadev.fr/api/request/${trip.id}`, {
       method: "POST",
       headers: {
@@ -49,8 +47,8 @@ const RoadCard = (props) => {
         return response.json();
       })
       .then((response) => {
-        console.log(response);
-        if (response.ok) {
+        if (response.status === "pending") {
+          console.log('passed');
           props.demandCreated();
         }
       });

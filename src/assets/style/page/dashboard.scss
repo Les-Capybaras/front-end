@@ -366,3 +366,19 @@ li.step div span {
   font-weight: 600 !important;
   font-size: 18px;
 }
+
+.demand-created {
+  position: fixed;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 30%;
+  padding: 1.4rem;
+  color: #e8f5f5;
+  background-color: #179f9f;
+  font-size: 1.4rem;
+  font-weight: 600;
+  border-radius: 3rem;
+  text-align: center;
+}

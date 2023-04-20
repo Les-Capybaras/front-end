@@ -52,6 +52,7 @@ export default function Dashboard() {
   };
 
   const demandCreated = () => {
+    console.log('demandCreated');
     setIsDemandCreated(true);
     setTimeout(() => {
       setIsDemandCreated(false);
@@ -102,7 +103,7 @@ export default function Dashboard() {
 
               {/* <input type="text" placeholder="Quand ?" className="input input-ghost max-w-xs" /> */}
               <BiCalendar />
-              <Datepicker startDate={startDate} setStartDate={setStartDate} demandCreated={demandCreated} />
+              <Datepicker startDate={startDate} setStartDate={setStartDate} />
 
               <button type="submit" className="search-btn btn">
                 Rechercher
@@ -116,13 +117,13 @@ export default function Dashboard() {
         <div className="container-title-dashboardList">
           <p>Trajets qui pourrait vous intéresser</p>
           {trips.map((trip) => (
-            <RoadCard trip={trip} key={trip.id} />
+            <RoadCard trip={trip} demandCreated={demandCreated} key={trip.id} />
           ))}
         </div>
       </div>
-      {isDemandCreated && (
+      { isDemandCreated && (
         <div className="demand-created">
-          <p>Votre demande a bien été envoyée</p>
+          <p className="title">Votre demande a bien été envoyée</p>
         </div>
       )
       }
