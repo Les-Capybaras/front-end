@@ -12,7 +12,6 @@ const RoadCardDriver = (props) => {
     day: "numeric",
   };
   const formattedDate = startDate.toLocaleDateString("fr-FR", options);
-  console.log(formattedDate);
   const parts = trip.estimatedDuration.split(":");
   const hours = parseInt(parts[0], 10);
   const minutes = parseInt(parts[1], 10);
@@ -60,6 +59,13 @@ const RoadCardDriver = (props) => {
             <div className="seat-driver">
               <MdAirlineSeatReclineNormal />
               <p>{props.trip.seats} passagers</p>
+            </div>
+          </div>
+        </div>
+        <div className="driver-info">
+          <div className="driver">
+            <div>
+              <label>{formattedDate}</label>
             </div>
           </div>
         </div>
